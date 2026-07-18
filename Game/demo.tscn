@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://c7mfja2fr8dst" path="res://Game/Interact/hold_button.gd" id="2"]
 [ext_resource type="Script" uid="uid://duw5ogh6gfafm" path="res://Game/Interact/multi_lock.gd" id="3"]
 [ext_resource type="PackedScene" path="res://Game/Player/player.tscn" id="4"]
+[ext_resource type="PackedScene" path="res://Game/Interact/pressure_valve.tscn" id="5"]
 
 [sub_resource type="Environment" id="Env_1"]
 ambient_light_source = 2
@@ -48,7 +49,7 @@ shape = SubResource("FloorShape_1")
 mesh = SubResource("PlaneMesh_g4v7s")
 
 [node name="Player" parent="." unique_id=1972873706 instance=ExtResource("4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.4703484e-08, 1)
 
 [node name="Button A" type="Node3D" parent="." unique_id=485087377]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1.5, -3)
@@ -79,6 +80,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -5)
 script = ExtResource("3")
 buttons = Array[NodePath]([NodePath("../Button A"), NodePath("../Button B")])
 door = NodePath("../Door")
+
+[node name="Pressure Valve" parent="." unique_id=344320403 instance=ExtResource("5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 1.6, -3)
 
 [node name="Door" type="MeshInstance3D" parent="." unique_id=2054622661]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -7.5)
