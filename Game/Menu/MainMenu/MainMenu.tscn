@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://dpo7isu2b6qq6"]
+
+[ext_resource type="Script" uid="uid://b5scb2n3mwoc7" path="res://Game/Menu/MainMenu/main_menu.gd" id="1_83war"]
+[ext_resource type="PackedScene" uid="uid://c311flk61k3kk" path="res://Game/Menu/OptionsMenu/options_menu.tscn" id="1_ivl0h"]
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=1489668487]
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1220915211]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MainMenu" type="Control" parent="PanelContainer" unique_id=1749053435]
+layout_mode = 2
+script = ExtResource("1_83war")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MainMenu" unique_id=566757963]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 326.0
+offset_right = -326.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 113
+alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/MainMenu/VBoxContainer" unique_id=1215207585]
+custom_minimum_size = Vector2(206.635, 0)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "[center]Inova Jam - 2026"
+fit_content = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MainMenu/VBoxContainer" unique_id=757844667]
+custom_minimum_size = Vector2(300, 0)
+custom_maximum_size = Vector2(300, -1)
+layout_mode = 2
+size_flags_horizontal = 4
+alignment = 1
+
+[node name="StartGame_button" type="Button" parent="PanelContainer/MainMenu/VBoxContainer/VBoxContainer" unique_id=1808193108]
+layout_mode = 2
+text = "Start Game"
+
+[node name="Options_button" type="Button" parent="PanelContainer/MainMenu/VBoxContainer/VBoxContainer" unique_id=1950274854]
+layout_mode = 2
+text = "Options"
+
+[node name="Quit_button" type="Button" parent="PanelContainer/MainMenu/VBoxContainer/VBoxContainer" unique_id=50993707]
+layout_mode = 2
+text = "Quit"
+
+[node name="OptionsMenu" parent="PanelContainer" unique_id=1100865240 instance=ExtResource("1_ivl0h")]
+visible = false
+layout_mode = 2
