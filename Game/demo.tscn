@@ -1,0 +1,85 @@
+[gd_scene format=3 uid="uid://cawtspt0td1el"]
+
+[ext_resource type="Script" uid="uid://cfqwece225i8f" path="res://Game/demo.gd" id="1"]
+[ext_resource type="Script" uid="uid://c7mfja2fr8dst" path="res://Game/Interact/hold_button.gd" id="2"]
+[ext_resource type="Script" uid="uid://duw5ogh6gfafm" path="res://Game/Interact/multi_lock.gd" id="3"]
+[ext_resource type="PackedScene" path="res://Game/Player/player.tscn" id="4"]
+
+[sub_resource type="Environment" id="Env_1"]
+ambient_light_source = 2
+ambient_light_color = Color(0.7, 0.72, 0.8, 1)
+ambient_light_energy = 0.8
+
+[sub_resource type="BoxShape3D" id="FloorShape_1"]
+size = Vector3(20, 0.4, 20)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_g4v7s"]
+size = Vector2(20, 20)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_c0tns"]
+size = Vector3(0.7, 0.7, 0.7)
+
+[sub_resource type="BoxMesh" id="BoxMesh_vkte0"]
+size = Vector3(0.7, 0.7, 0.7)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y6rti"]
+albedo_color = Color(0.003921569, 0, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_2gbv4"]
+material = SubResource("StandardMaterial3D_y6rti")
+size = Vector3(2.5, 3, 0.3)
+
+[node name="Demo" type="Node3D" unique_id=2130005721]
+script = ExtResource("1")
+
+[node name="Environment" type="WorldEnvironment" parent="." unique_id=701806546]
+environment = SubResource("Env_1")
+
+[node name="Directional Light" type="DirectionalLight3D" parent="." unique_id=575047284]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0.866, 0, -0.866, 0.5, 0, 8, 4)
+
+[node name="Floor" type="StaticBody3D" parent="." unique_id=1203446954]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
+
+[node name="Collision" type="CollisionShape3D" parent="Floor" unique_id=682646956]
+shape = SubResource("FloorShape_1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor" unique_id=2048725672]
+mesh = SubResource("PlaneMesh_g4v7s")
+
+[node name="Player" parent="." unique_id=1972873706 instance=ExtResource("4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 1)
+
+[node name="Button A" type="Node3D" parent="." unique_id=485087377]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1.5, -3)
+script = ExtResource("2")
+
+[node name="Body" type="StaticBody3D" parent="Button A" unique_id=1860657530]
+
+[node name="Collision" type="CollisionShape3D" parent="Button A/Body" unique_id=1052829412]
+shape = SubResource("BoxShape3D_c0tns")
+
+[node name="Mesh" type="MeshInstance3D" parent="Button A/Body" unique_id=878325706]
+mesh = SubResource("BoxMesh_vkte0")
+
+[node name="Button B" type="Node3D" parent="." unique_id=229173319]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6999998, 1.5, -3)
+script = ExtResource("2")
+
+[node name="Body" type="StaticBody3D" parent="Button B" unique_id=1437543615]
+
+[node name="Collision" type="CollisionShape3D" parent="Button B/Body" unique_id=831810271]
+shape = SubResource("BoxShape3D_c0tns")
+
+[node name="Mesh" type="MeshInstance3D" parent="Button B/Body" unique_id=690935777]
+mesh = SubResource("BoxMesh_vkte0")
+
+[node name="Multi Lock" type="Node3D" parent="." unique_id=756868361]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -5)
+script = ExtResource("3")
+buttons = Array[NodePath]([NodePath("../Button A"), NodePath("../Button B")])
+door = NodePath("../Door")
+
+[node name="Door" type="MeshInstance3D" parent="." unique_id=2054622661]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -7.5)
+mesh = SubResource("BoxMesh_2gbv4")
