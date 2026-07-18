@@ -1,0 +1,81 @@
+[gd_scene format=3 uid="uid://dvf6kpxsqwanp"]
+
+[ext_resource type="FontFile" uid="uid://duflioi70yh1p" path="res://Assets/Fonts/Seven Segment.ttf" id="1_t4o6k"]
+[ext_resource type="Script" uid="uid://ba5t08f0lo3xk" path="res://Game/TelevisionScene/TimerForTV.gd" id="2_t73v3"]
+
+[sub_resource type="Animation" id="Animation_wekvm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:time_value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [120]
+}
+
+[sub_resource type="Animation" id="Animation_t73v3"]
+resource_name = "TvAnimation"
+length = 120.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:time_value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 120),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [120, 0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wekvm"]
+_data = {
+&"RESET": SubResource("Animation_wekvm"),
+&"TvAnimation": SubResource("Animation_t73v3")
+}
+
+[node name="Node2D" type="Node2D" unique_id=507120892]
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=989924232]
+disable_3d = true
+handle_input_locally = false
+render_target_update_mode = 4
+
+[node name="CanvasLayer" type="CanvasLayer" parent="SubViewport" unique_id=351358878]
+
+[node name="Panel" type="Panel" parent="SubViewport/CanvasLayer" unique_id=1431124119]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="SubViewport/CanvasLayer" unique_id=122996473]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_t4o6k")
+theme_override_font_sizes/font_size = 210
+text = "02:00"
+vertical_alignment = 1
+script = ExtResource("2_t73v3")
+time_value = 120
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SubViewport/CanvasLayer" unique_id=1935811305]
+libraries/ = SubResource("AnimationLibrary_wekvm")
+autoplay = &"TvAnimation"
