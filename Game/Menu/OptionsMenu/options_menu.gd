@@ -1,0 +1,54 @@
+extends Control
+
+@onready var resolution_button: OptionButton = $MarginContainer/Panel/MarginContainer/VBoxContainer/ResolutionButton
+var possible_resolutions : Dictionary[String, Vector2i] = {
+	"1280x720": Vector2i(1280, 720),
+	"1600x900": Vector2i(1600, 900),
+	"1920x1080": Vector2i(1920, 1080)
+}
+
+@onready var fps_button: OptionButton = $MarginContainer/Panel/MarginContainer/VBoxContainer/FPSbutton
+var possible_fps : Dictionary[String, int] = {
+	"Ilimitado": 0,
+	"120": 120,
+	"60": 60,
+	"30": 30
+}
+
+@onready var main_volume_slider: HSlider = $MarginContainer/Panel/MarginContainer/VBoxContainer/MainVolumeBox/MainVolumeSlider
+@onready var main_volume_value: Label = $MarginContainer/Panel/MarginContainer/VBoxContainer/MainVolumeBox/MainVolumeValue
+
+@onready var music_slider: HSlider = $MarginContainer/Panel/MarginContainer/VBoxContainer/MusicVolumeBox/MusicSlider
+@onready var music_value: Label = $MarginContainer/Panel/MarginContainer/VBoxContainer/MusicVolumeBox/MusicValue
+
+@onready var sfx_slider: HSlider = $MarginContainer/Panel/MarginContainer/VBoxContainer/SfxVolumeBox/SFXSlider
+@onready var sfx_value: Label = $MarginContainer/Panel/MarginContainer/VBoxContainer/SfxVolumeBox/SFXValue
+
+func _ready() -> void:
+	configure_resolution()
+	configure_fps()
+	resolution_button.item_selected.connect(_on_resolution_selected)
+	fps_button.item_selected.connect(_on_fps_selected)
+
+func configure_resolution() -> void:
+	resolution_button.clear()
+	for resolution in possible_resolutions.keys():
+		resolution_button.add_item(resolution)
+
+func configure_fps() -> void:
+	fps_button.clear()
+	for fps in possible_fps.keys():
+		fps_button.add_item(fps)
+
+func _on_resolution_selected(index: int) -> void:
+	var resolution_value_string : String = resolution_button.get_item_text(index)
+	var resolution_value = possible_resolutions.get(resolution_value_string, Vector2i(1920, 1080))
+	DisplayServer.window_set_size(resolution_value)
+
+func _on_fps_selected(index : int) -> void:
+	var fps_value_string : String = fps_button.get_item_text(index)
+	Engine.max_fps = possible_fps.get(fps_value_string, 0)
+
+func _unhandled_key_input(event: InputEvent) -> void:
+	if event.is_action_pressed("Esc"):
+		visible = !visible
