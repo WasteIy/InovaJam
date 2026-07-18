@@ -1,9 +1,9 @@
 extends Interactable
 
-const SPEED = 0.05
-const MAX_ANGLE = 1.1
+const NEEDLE_SPEED = 0.05
+const NEEDLE_MAX_ANGLE = 1.1
 const GREEN_ZONE = 0.25
-const STRIKES_TO_STABILIZE = 3
+const HITS_TO_STABILIZE = 3
 
 const ON_COLOR = Color(0.2, 1, 0.3)
 const OFF_COLOR = Color(0.12, 0.12, 0.14)
@@ -11,45 +11,48 @@ const OFF_COLOR = Color(0.12, 0.12, 0.14)
 @onready var needle = $Needle
 @onready var lights = $Lights.get_children()
 
-var stabilized = false
+## Verdadeiro depois que você acertou o bastante, aí o ponteiro para no centro
+var is_stabilized = false
 
-var _strikes = 0
-var _materials = []
+## Acertos que você já conseguiu nesse loop
+var _good_hits = 0
+## Um material por luzinha, pra acender uma de cada vez
+var _light_materials = []
 
 func setup():
 	for light in lights:
 		var material = StandardMaterial3D.new()
 		light.material_override = material
-		_materials.append(material)
-	_paint_lights()
+		_light_materials.append(material)
+	_refresh_lights()
 
 func on_press(_agent):
-	if stabilized or absf(_offset()) > GREEN_ZONE:
+	if is_stabilized or absf(_needle_offset()) > GREEN_ZONE:
 		return
-	_strikes += 1
-	if _strikes >= STRIKES_TO_STABILIZE:
-		stabilized = true
-	_paint_lights()
+	_good_hits += 1
+	if _good_hits >= HITS_TO_STABILIZE:
+		is_stabilized = true
+	_refresh_lights()
 
 func is_active():
-	return stabilized
+	return is_stabilized
 
 func reset_state():
-	stabilized = false
-	_strikes = 0
-	_paint_lights()
+	is_stabilized = false
+	_good_hits = 0
+	_refresh_lights()
 
 func _process(_delta):
-	needle.rotation.z = -_offset() * MAX_ANGLE
+	needle.rotation.z = -_needle_offset() * NEEDLE_MAX_ANGLE
 
-func _offset():
-	if stabilized:
+func _needle_offset():
+	if is_stabilized:
 		return 0.0
-	return sin(TimeLoop.tick * SPEED)
+	return sin(TimeLoop.current_tick * NEEDLE_SPEED)
 
-func _paint_lights():
-	for i in _materials.size():
-		var on = i < _strikes
-		_materials[i].albedo_color = ON_COLOR if on else OFF_COLOR
-		_materials[i].emission_enabled = on
-		_materials[i].emission = ON_COLOR
+func _refresh_lights():
+	for i in _light_materials.size():
+		var lit = i < _good_hits
+		_light_materials[i].albedo_color = ON_COLOR if lit else OFF_COLOR
+		_light_materials[i].emission_enabled = lit
+		_light_materials[i].emission = ON_COLOR

@@ -1,7 +1,7 @@
 class_name WireTerminal
 extends Interactable
 
-const COLORS = [
+const WIRE_COLORS = [
 	Color(0.9, 0.22, 0.2),
 	Color(0.95, 0.78, 0.2),
 	Color(0.25, 0.5, 1.0),
@@ -11,50 +11,49 @@ const COLORS = [
 
 const IDLE_ENERGY = 0.12
 const SELECTED_ENERGY = 0.7
-const LIVE_ENERGY = 1.4
 
-@export var slot : int = 0 : set = _set_slot
+@export var wire_id : int = 0 : set = _set_wire_id
 @export var is_source : bool = true
 
-var connected = false
-var selected = false
+var is_wired = false
+var is_selected = false
 
 var _material
 
-func color():
-	return COLORS[slot % COLORS.size()]
+func wire_color():
+	return WIRE_COLORS[wire_id % WIRE_COLORS.size()]
 
 func setup():
 	_material = StandardMaterial3D.new()
 	_material.emission_enabled = true
 	$Mesh.material_override = _material
-	_paint()
+	_refresh_glow()
 
 func on_press(agent):
-	get_parent().terminal_pressed(self, agent)
+	get_parent().on_terminal_pressed(self, agent)
 
-func mark(now_connected, now_selected):
-	connected = now_connected
-	selected = now_selected
-	_paint()
+func set_state(wired, picked):
+	is_wired = wired
+	is_selected = picked
+	_refresh_glow()
 
 func reset_state():
-	connected = false
-	selected = false
-	_paint()
+	is_wired = false
+	is_selected = false
+	_refresh_glow()
 
-func _set_slot(value):
-	slot = value
-	_paint()
+func _set_wire_id(value):
+	wire_id = value
+	_refresh_glow()
 
-func _paint():
+func _refresh_glow():
 	if _material == null:
 		return
 	var energy = IDLE_ENERGY
-	if connected:
+	if is_wired:
 		energy = LIVE_ENERGY
-	elif selected:
+	elif is_selected:
 		energy = SELECTED_ENERGY
-	_material.albedo_color = color()
-	_material.emission = color()
+	_material.albedo_color = wire_color()
+	_material.emission = wire_color()
 	_material.emission_energy_multiplier = energy

@@ -69,7 +69,7 @@ shape = SubResource("TerminalShape")
 [node name="Source 1" type="StaticBody3D" parent="." unique_id=1358223895]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.55, 0, 0)
 script = ExtResource("2")
-slot = 1
+wire_id = 1
 
 [node name="Mesh" type="MeshInstance3D" parent="Source 1" unique_id=1503524207]
 material_override = SubResource("StandardMaterial3D_hlfck")
@@ -81,7 +81,7 @@ shape = SubResource("TerminalShape")
 [node name="Source 2" type="StaticBody3D" parent="." unique_id=770378907]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.55, -0.45, 0)
 script = ExtResource("2")
-slot = 2
+wire_id = 2
 
 [node name="Mesh" type="MeshInstance3D" parent="Source 2" unique_id=358282490]
 material_override = SubResource("StandardMaterial3D_h73hv")
@@ -93,7 +93,7 @@ shape = SubResource("TerminalShape")
 [node name="Target 2" type="StaticBody3D" parent="." unique_id=1708606118]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.55, 0.45, 0)
 script = ExtResource("2")
-slot = 2
+wire_id = 2
 is_source = false
 
 [node name="Mesh" type="MeshInstance3D" parent="Target 2" unique_id=1613756409]
@@ -118,7 +118,7 @@ shape = SubResource("TerminalShape")
 [node name="Target 1" type="StaticBody3D" parent="." unique_id=477930542]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.55, -0.45, 0)
 script = ExtResource("2")
-slot = 1
+wire_id = 1
 is_source = false
 
 [node name="Mesh" type="MeshInstance3D" parent="Target 1" unique_id=939627726]

@@ -1,53 +1,62 @@
 extends Node
 
+## Dispara logo antes de um loop novo começar, pros puzzles se limparem
 signal loop_reset
 
-@export var loop_duration : float = 90.0
+## Quanto tempo você tem antes do loop voltar sozinho
+@export var loop_duration_seconds : float = 90.0
 
-var tick = 0
-var running = false
-var recorder
+## Ticks de física desde que esse loop começou. Gravação e replay se guiam por isso
+var current_tick = 0
+## Fica falso até chamarem start_run(), pra  gravar nada antes da run começar
+var is_running = false
+## O player atual
+var player_recorder
+## Cena do clone, instanciada uma vez por loop passado
 var clone_scene
-var clone_parent
-var recordings = []
-var clones = []
+## Quem vira pai dos clones, atualmente a raiz do nível
+var clone_container
+## Uma entrada por loop terminado, cada uma com a lista de frames de cada tick
+var past_recordings = []
+## Clones refazendo as runs antigas agora
+var active_clones = []
 
-func configure(parent, scene):
-	clone_parent = parent
+func setup_clones(container, scene):
+	clone_container = container
 	clone_scene = scene
 
-func start():
-	recordings.clear()
-	_clear_clones()
-	tick = 0
-	running = true
-	recorder.reset()
+func start_run():
+	past_recordings.clear()
+	_despawn_clones()
+	current_tick = 0
+	is_running = true
+	player_recorder.reset_to_spawn()
 
-func rewind():
-	if not running:
+func rewind_loop():
+	if not is_running:
 		return
-	recordings.append(recorder.frames)
+	past_recordings.append(player_recorder.recorded_frames)
 	loop_reset.emit()
-	_clear_clones()
-	for frames in recordings:
+	_despawn_clones()
+	for frames in past_recordings:
 		var clone = clone_scene.instantiate()
-		clone_parent.add_child(clone)
-		clone.play(frames)
-		clones.append(clone)
-	recorder.reset()
-	tick = 0
+		clone_container.add_child(clone)
+		clone.load_recording(frames)
+		active_clones.append(clone)
+	player_recorder.reset_to_spawn()
+	current_tick = 0
 
 func _physics_process(_delta):
-	if not running:
+	if not is_running:
 		return
-	recorder.capture()
-	for clone in clones:
-		clone.apply(tick)
-	tick += 1
-	if tick >= loop_duration * Engine.physics_ticks_per_second:
-		rewind()
+	player_recorder.capture_frame()
+	for clone in active_clones:
+		clone.replay_tick(current_tick)
+	current_tick += 1
+	if current_tick >= loop_duration_seconds * Engine.physics_ticks_per_second:
+		rewind_loop()
 
-func _clear_clones():
-	for clone in clones:
+func _despawn_clones():
+	for clone in active_clones:
 		clone.queue_free()
-	clones.clear()
+	active_clones.clear()

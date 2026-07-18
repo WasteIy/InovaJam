@@ -5,29 +5,30 @@ extends Interactable
 
 @onready var mesh = $Mesh
 
-var pressed = false
+## Verdadeiro sempre que pelo menos um clone tá segurando isso
+var is_pressed = false
 
 var _material
 
 func setup():
 	_material = StandardMaterial3D.new()
 	mesh.material_override = _material
-	_paint(false)
+	_refresh_color(false)
 
-func on_hold(count):
-	var now = count > 0
-	if now != pressed:
-		pressed = now
-		_paint(now)
+func on_hold(holder_count):
+	var held_now = holder_count > 0
+	if held_now != is_pressed:
+		is_pressed = held_now
+		_refresh_color(held_now)
 
 func is_active():
-	return pressed
+	return is_pressed
 
 func reset_state():
-	pressed = false
-	_paint(false)
+	is_pressed = false
+	_refresh_color(false)
 
-func _paint(on):
-	_material.albedo_color = pressed_color if on else idle_color
-	_material.emission_enabled = on
+func _refresh_color(lit):
+	_material.albedo_color = pressed_color if lit else idle_color
+	_material.emission_enabled = lit
 	_material.emission = pressed_color

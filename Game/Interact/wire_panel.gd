@@ -2,71 +2,70 @@ extends Node3D
 
 @export var wire_thickness : float = 0.05
 
-var _sources = []
-var _selected = {}
-var _links = {}
-var _wires = {}
+var _source_terminals = []
+var _held_source = {}
+var _joined_wires = {}
+var _wire_meshes = {}
 
 func _ready():
-	var targets = []
+	var target_terminals = []
 	for child in get_children():
 		if child is WireTerminal:
 			if child.is_source:
-				_sources.append(child)
+				_source_terminals.append(child)
 			else:
-				targets.append(child)
-	_scramble(targets)
+				target_terminals.append(child)
+	_scramble_wiring(target_terminals)
 	TimeLoop.loop_reset.connect(_on_loop_reset)
 
-func _scramble(targets):
-	var slots = []
-	for source in _sources:
-		slots.append(source.slot)
-	if targets.size() != slots.size():
-		push_warning("%s: %d fontes para %d destinos, a fiacao nao fecha" % [name, slots.size(), targets.size()])
-		return
-	slots.shuffle()
-	for i in _sources.size():
-		_sources[i].slot = slots[i]
-	slots.shuffle()
-	for i in targets.size():
-		targets[i].slot = slots[i]
-
 func is_active():
-	return _sources.size() > 0 and _links.size() >= _sources.size()
+	return _source_terminals.size() > 0 and _joined_wires.size() >= _source_terminals.size()
 
 func progress():
-	if _sources.is_empty():
+	if _source_terminals.is_empty():
 		return 0.0
-	return float(_links.size()) / float(_sources.size())
+	return float(_joined_wires.size()) / float(_source_terminals.size())
 
-func terminal_pressed(terminal, agent):
-	if terminal.connected:
+func on_terminal_pressed(terminal, agent):
+	if terminal.is_wired:
 		return
 	if terminal.is_source:
-		_select(agent, terminal)
+		_hold_source(agent, terminal)
 		return
-	if not _selected.has(agent):
+	if not _held_source.has(agent):
 		return
-	var source = _selected[agent]
-	if source.slot == terminal.slot:
-		_link(source, terminal)
-	_select(agent, null)
+	var source = _held_source[agent]
+	if source.wire_id == terminal.wire_id:
+		_join_wire(source, terminal)
+	_hold_source(agent, null)
 
-func _select(agent, terminal):
-	if _selected.has(agent):
-		var previous = _selected[agent]
-		if is_instance_valid(previous) and not previous.connected:
-			previous.mark(false, false)
-		_selected.erase(agent)
+func _scramble_wiring(target_terminals):
+	var wire_ids = []
+	for source in _source_terminals:
+		wire_ids.append(source.wire_id)
+	if target_terminals.size() != wire_ids.size():
+		return
+	wire_ids.shuffle()
+	for i in _source_terminals.size():
+		_source_terminals[i].wire_id = wire_ids[i]
+	wire_ids.shuffle()
+	for i in target_terminals.size():
+		target_terminals[i].wire_id = wire_ids[i]
+
+func _hold_source(agent, terminal):
+	if _held_source.has(agent):
+		var previous = _held_source[agent]
+		if is_instance_valid(previous) and not previous.is_wired:
+			previous.set_state(false, false)
+		_held_source.erase(agent)
 	if terminal:
-		_selected[agent] = terminal
-		terminal.mark(false, true)
+		_held_source[agent] = terminal
+		terminal.set_state(false, true)
 
-func _link(source, target):
-	_links[source.slot] = target.slot
-	source.mark(true, false)
-	target.mark(true, false)
+func _join_wire(source, target):
+	_joined_wires[source.wire_id] = true
+	source.set_state(true, false)
+	target.set_state(true, false)
 
 	var from = source.position
 	var to = target.position
@@ -75,19 +74,19 @@ func _link(source, target):
 	box.size = Vector3(from.distance_to(to), wire_thickness, wire_thickness)
 	wire.mesh = box
 	var material = StandardMaterial3D.new()
-	material.albedo_color = source.color()
+	material.albedo_color = source.wire_color()
 	material.emission_enabled = true
-	material.emission = source.color()
+	material.emission = source.wire_color()
 	material.emission_energy_multiplier = 0.9
 	wire.material_override = material
 	wire.position = (from + to) * 0.5
 	wire.rotation.z = atan2(to.y - from.y, to.x - from.x)
 	add_child(wire)
-	_wires[source.slot] = wire
+	_wire_meshes[source.wire_id] = wire
 
 func _on_loop_reset():
-	_links.clear()
-	_selected.clear()
-	for wire in _wires.values():
+	_joined_wires.clear()
+	_held_source.clear()
+	for wire in _wire_meshes.values():
 		wire.queue_free()
-	_wires.clear()
+	_wire_meshes.clear()
