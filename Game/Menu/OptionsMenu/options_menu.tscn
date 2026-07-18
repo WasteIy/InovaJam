@@ -1,0 +1,151 @@
+[gd_scene format=3 uid="uid://c311flk61k3kk"]
+
+[ext_resource type="Script" uid="uid://fxtpj67btrlg" path="res://Game/Menu/OptionsMenu/options_menu.gd" id="1_8sxoi"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_capps"]
+bg_color = Color(0.49, 0.49, 0.49, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[node name="OptionsMenu" type="Control" unique_id=1100865240]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8sxoi")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1459261798]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 20
+
+[node name="Panel" type="Panel" parent="MarginContainer" unique_id=1181888165]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_capps")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Panel" unique_id=1807557645]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/Panel/MarginContainer" unique_id=1158958104]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2" unique_id=788870917]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MainVideoLabel" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/VBoxContainer" unique_id=942397809]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Vídeo"
+horizontal_alignment = 1
+
+[node name="ResolutionLabel" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/VBoxContainer" unique_id=711673665]
+layout_mode = 2
+text = "Resolução"
+
+[node name="ResolutionButton" type="OptionButton" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/VBoxContainer" unique_id=1651773233]
+layout_mode = 2
+selected = 0
+item_count = 1
+popup/item_0/id = 1
+
+[node name="FPSlabel" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/VBoxContainer" unique_id=359643288]
+layout_mode = 2
+text = "FPS"
+
+[node name="FPSbutton" type="OptionButton" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/VBoxContainer" unique_id=1261372384]
+layout_mode = 2
+selected = 0
+item_count = 1
+popup/item_0/id = 1
+
+[node name="MainAudioLabel" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/VBoxContainer" unique_id=350523973]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "
+Áudio"
+horizontal_alignment = 1
+
+[node name="MainVolumeLabel" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/VBoxContainer" unique_id=1409717735]
+layout_mode = 2
+text = "Volume Principal"
+
+[node name="MainVolumeBox" type="HBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/VBoxContainer" unique_id=1428200029]
+layout_mode = 2
+
+[node name="MainVolumeSlider" type="HSlider" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/VBoxContainer/MainVolumeBox" unique_id=671248397]
+layout_mode = 2
+size_flags_horizontal = 3
+value = 100.0
+
+[node name="MainVolumeValue" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/VBoxContainer/MainVolumeBox" unique_id=366892276]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "100 %"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MusicLabel" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/VBoxContainer" unique_id=2135109243]
+layout_mode = 2
+text = "Música"
+
+[node name="MusicVolumeBox" type="HBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/VBoxContainer" unique_id=1081889831]
+layout_mode = 2
+
+[node name="MusicSlider" type="HSlider" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/VBoxContainer/MusicVolumeBox" unique_id=2054068308]
+layout_mode = 2
+size_flags_horizontal = 3
+value = 100.0
+
+[node name="MusicValue" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/VBoxContainer/MusicVolumeBox" unique_id=420969299]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "100 %"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SFXLabel" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/VBoxContainer" unique_id=805769586]
+layout_mode = 2
+text = "SFX"
+
+[node name="SfxVolumeBox" type="HBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/VBoxContainer" unique_id=1761615749]
+layout_mode = 2
+
+[node name="SFXSlider" type="HSlider" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/VBoxContainer/SfxVolumeBox" unique_id=783938738]
+layout_mode = 2
+size_flags_horizontal = 3
+value = 100.0
+
+[node name="SFXValue" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2/VBoxContainer/SfxVolumeBox" unique_id=734067233]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "100 %"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BackButton" type="Button" parent="MarginContainer/Panel/MarginContainer/VBoxContainer2" unique_id=902083383]
+custom_minimum_size = Vector2(300, 0)
+custom_maximum_size = Vector2(500, 500)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Voltar"

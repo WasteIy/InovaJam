@@ -1,13 +1,13 @@
 extends Control
 
-@onready var resolution_button: OptionButton = $MarginContainer/Panel/MarginContainer/VBoxContainer/ResolutionButton
+@onready var resolution_button: OptionButton = $MarginContainer/Panel/MarginContainer/VBoxContainer2/VBoxContainer/ResolutionButton
 var possible_resolutions : Dictionary[String, Vector2i] = {
 	"1280x720": Vector2i(1280, 720),
 	"1600x900": Vector2i(1600, 900),
 	"1920x1080": Vector2i(1920, 1080)
 }
 
-@onready var fps_button: OptionButton = $MarginContainer/Panel/MarginContainer/VBoxContainer/FPSbutton
+@onready var fps_button: OptionButton = $MarginContainer/Panel/MarginContainer/VBoxContainer2/VBoxContainer/FPSbutton
 var possible_fps : Dictionary[String, int] = {
 	"Ilimitado": 0,
 	"120": 120,
@@ -15,20 +15,26 @@ var possible_fps : Dictionary[String, int] = {
 	"30": 30
 }
 
-@onready var main_volume_slider: HSlider = $MarginContainer/Panel/MarginContainer/VBoxContainer/MainVolumeBox/MainVolumeSlider
-@onready var main_volume_value: Label = $MarginContainer/Panel/MarginContainer/VBoxContainer/MainVolumeBox/MainVolumeValue
+@onready var main_volume_slider: HSlider = $MarginContainer/Panel/MarginContainer/VBoxContainer2/VBoxContainer/MainVolumeBox/MainVolumeSlider
+@onready var main_volume_value: Label = $MarginContainer/Panel/MarginContainer/VBoxContainer2/VBoxContainer/MainVolumeBox/MainVolumeValue
 
-@onready var music_slider: HSlider = $MarginContainer/Panel/MarginContainer/VBoxContainer/MusicVolumeBox/MusicSlider
-@onready var music_value: Label = $MarginContainer/Panel/MarginContainer/VBoxContainer/MusicVolumeBox/MusicValue
+@onready var music_slider: HSlider = $MarginContainer/Panel/MarginContainer/VBoxContainer2/VBoxContainer/MusicVolumeBox/MusicSlider
+@onready var music_value: Label = $MarginContainer/Panel/MarginContainer/VBoxContainer2/VBoxContainer/MusicVolumeBox/MusicValue
 
-@onready var sfx_slider: HSlider = $MarginContainer/Panel/MarginContainer/VBoxContainer/SfxVolumeBox/SFXSlider
-@onready var sfx_value: Label = $MarginContainer/Panel/MarginContainer/VBoxContainer/SfxVolumeBox/SFXValue
+@onready var sfx_slider: HSlider = $MarginContainer/Panel/MarginContainer/VBoxContainer2/VBoxContainer/SfxVolumeBox/SFXSlider
+@onready var sfx_value: Label = $MarginContainer/Panel/MarginContainer/VBoxContainer2/VBoxContainer/SfxVolumeBox/SFXValue
+
+@onready var back_button: Button = $MarginContainer/Panel/MarginContainer/VBoxContainer2/BackButton
 
 func _ready() -> void:
 	configure_resolution()
 	configure_fps()
 	resolution_button.item_selected.connect(_on_resolution_selected)
 	fps_button.item_selected.connect(_on_fps_selected)
+	back_button.pressed.connect(set_invisible)
+
+func set_invisible():
+	visible = false
 
 func configure_resolution() -> void:
 	resolution_button.clear()

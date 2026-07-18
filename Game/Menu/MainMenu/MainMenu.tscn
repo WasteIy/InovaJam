@@ -1,13 +1,7 @@
 [gd_scene format=3 uid="uid://dpo7isu2b6qq6"]
 
-[ext_resource type="Script" uid="uid://fxtpj67btrlg" path="res://Game/Menu/OptionsMenu/options_menu.gd" id="1_ivl0h"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_capps"]
-bg_color = Color(0.3, 0.3, 0.3, 1)
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
+[ext_resource type="Script" uid="uid://b5scb2n3mwoc7" path="res://Game/Menu/MainMenu/main_menu.gd" id="1_83war"]
+[ext_resource type="PackedScene" uid="uid://c311flk61k3kk" path="res://Game/Menu/OptionsMenu/options_menu.tscn" id="1_ivl0h"]
 
 [node name="CanvasLayer" type="CanvasLayer" unique_id=1489668487]
 
@@ -20,6 +14,7 @@ grow_vertical = 2
 
 [node name="MainMenu" type="Control" parent="PanelContainer" unique_id=1749053435]
 layout_mode = 2
+script = ExtResource("1_83war")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MainMenu" unique_id=566757963]
 custom_minimum_size = Vector2(500, 0)
@@ -60,127 +55,6 @@ text = "Options"
 layout_mode = 2
 text = "Quit"
 
-[node name="OptionsMenu" type="Control" parent="PanelContainer" unique_id=1445916753]
+[node name="OptionsMenu" parent="PanelContainer" unique_id=1100865240 instance=ExtResource("1_ivl0h")]
+visible = false
 layout_mode = 2
-script = ExtResource("1_ivl0h")
-
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/OptionsMenu" unique_id=586157542]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 100
-theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 100
-theme_override_constants/margin_bottom = 20
-
-[node name="Panel" type="Panel" parent="PanelContainer/OptionsMenu/MarginContainer" unique_id=1588096321]
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_capps")
-
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/OptionsMenu/MarginContainer/Panel" unique_id=1914990427]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 20
-
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/OptionsMenu/MarginContainer/Panel/MarginContainer" unique_id=1401270146]
-layout_mode = 2
-
-[node name="MainVideoLabel" type="Label" parent="PanelContainer/OptionsMenu/MarginContainer/Panel/MarginContainer/VBoxContainer" unique_id=321276738]
-layout_mode = 2
-theme_override_font_sizes/font_size = 20
-text = "Vídeo"
-horizontal_alignment = 1
-
-[node name="ResolutionLabel" type="Label" parent="PanelContainer/OptionsMenu/MarginContainer/Panel/MarginContainer/VBoxContainer" unique_id=746906338]
-layout_mode = 2
-text = "Resolução"
-
-[node name="ResolutionButton" type="OptionButton" parent="PanelContainer/OptionsMenu/MarginContainer/Panel/MarginContainer/VBoxContainer" unique_id=485341203]
-layout_mode = 2
-selected = 0
-item_count = 1
-popup/item_0/id = 1
-
-[node name="FPSlabel" type="Label" parent="PanelContainer/OptionsMenu/MarginContainer/Panel/MarginContainer/VBoxContainer" unique_id=1278136056]
-layout_mode = 2
-text = "FPS"
-
-[node name="FPSbutton" type="OptionButton" parent="PanelContainer/OptionsMenu/MarginContainer/Panel/MarginContainer/VBoxContainer" unique_id=1616643135]
-layout_mode = 2
-selected = 0
-item_count = 1
-popup/item_0/id = 1
-
-[node name="MainAudioLabel" type="Label" parent="PanelContainer/OptionsMenu/MarginContainer/Panel/MarginContainer/VBoxContainer" unique_id=2083320914]
-layout_mode = 2
-theme_override_font_sizes/font_size = 20
-text = "
-Áudio"
-horizontal_alignment = 1
-
-[node name="MainVolumeLabel" type="Label" parent="PanelContainer/OptionsMenu/MarginContainer/Panel/MarginContainer/VBoxContainer" unique_id=900527666]
-layout_mode = 2
-text = "Volume Principal"
-
-[node name="MainVolumeBox" type="HBoxContainer" parent="PanelContainer/OptionsMenu/MarginContainer/Panel/MarginContainer/VBoxContainer" unique_id=630376356]
-layout_mode = 2
-
-[node name="MainVolumeSlider" type="HSlider" parent="PanelContainer/OptionsMenu/MarginContainer/Panel/MarginContainer/VBoxContainer/MainVolumeBox" unique_id=1522141992]
-layout_mode = 2
-size_flags_horizontal = 3
-value = 100.0
-
-[node name="MainVolumeValue" type="Label" parent="PanelContainer/OptionsMenu/MarginContainer/Panel/MarginContainer/VBoxContainer/MainVolumeBox" unique_id=1774719747]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-text = "100 %"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="MusicLabel" type="Label" parent="PanelContainer/OptionsMenu/MarginContainer/Panel/MarginContainer/VBoxContainer" unique_id=282750630]
-layout_mode = 2
-text = "Música"
-
-[node name="MusicVolumeBox" type="HBoxContainer" parent="PanelContainer/OptionsMenu/MarginContainer/Panel/MarginContainer/VBoxContainer" unique_id=630847997]
-layout_mode = 2
-
-[node name="MusicSlider" type="HSlider" parent="PanelContainer/OptionsMenu/MarginContainer/Panel/MarginContainer/VBoxContainer/MusicVolumeBox" unique_id=1825847520]
-layout_mode = 2
-size_flags_horizontal = 3
-value = 100.0
-
-[node name="MusicValue" type="Label" parent="PanelContainer/OptionsMenu/MarginContainer/Panel/MarginContainer/VBoxContainer/MusicVolumeBox" unique_id=2071703635]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-text = "100 %"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="SFXLabel" type="Label" parent="PanelContainer/OptionsMenu/MarginContainer/Panel/MarginContainer/VBoxContainer" unique_id=569292784]
-layout_mode = 2
-text = "SFX"
-
-[node name="SfxVolumeBox" type="HBoxContainer" parent="PanelContainer/OptionsMenu/MarginContainer/Panel/MarginContainer/VBoxContainer" unique_id=467589558]
-layout_mode = 2
-
-[node name="SFXSlider" type="HSlider" parent="PanelContainer/OptionsMenu/MarginContainer/Panel/MarginContainer/VBoxContainer/SfxVolumeBox" unique_id=2071219970]
-layout_mode = 2
-size_flags_horizontal = 3
-value = 100.0
-
-[node name="SFXValue" type="Label" parent="PanelContainer/OptionsMenu/MarginContainer/Panel/MarginContainer/VBoxContainer/SfxVolumeBox" unique_id=853577006]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-text = "100 %"
-horizontal_alignment = 1
-vertical_alignment = 1
