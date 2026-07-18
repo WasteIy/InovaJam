@@ -7,13 +7,13 @@ func _ready():
 	TimeLoop.loop_reset.connect(_on_loop_reset)
 	setup()
 
-func report(agent, turn = 0.0):
+func report(agent, drag = Vector2.ZERO):
 	var was_held = _reports.has(agent) and _reports[agent] >= TimeLoop.tick - 1
 	_reports[agent] = TimeLoop.tick
 	if not was_held:
 		on_press(agent)
-	if turn != 0.0:
-		on_turn(agent, turn)
+	if drag != Vector2.ZERO:
+		on_drag(agent, drag)
 
 func setup():
 	pass
@@ -27,7 +27,7 @@ func on_press(_agent):
 func on_hold(_count):
 	pass
 
-func on_turn(_agent, _amount):
+func on_drag(_agent, _delta):
 	pass
 
 func is_active():

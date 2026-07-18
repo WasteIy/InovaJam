@@ -10,7 +10,7 @@ const SPEED = 4.0
 var frames = []
 
 var _action
-var _turn = 0.0
+var _drag = Vector2.ZERO
 var _grabbing = false
 var _mouse = Vector2.ZERO
 var _spawn_position
@@ -28,7 +28,7 @@ func capture():
 		"yaw": rotation.y,
 		"pitch": head.rotation.x,
 		"act": _action,
-		"turn": _turn,
+		"drag": _drag,
 	})
 
 func reset():
@@ -57,7 +57,7 @@ func _physics_process(delta):
 	move_and_slide()
 
 	_action = null
-	_turn = 0.0
+	_drag = Vector2.ZERO
 	_grabbing = false
 	if Input.is_action_pressed("interact") and ray.is_colliding():
 		var target = ray.get_collider()
@@ -65,6 +65,6 @@ func _physics_process(delta):
 			_action = target.get_path()
 			_grabbing = target.grabs()
 			if _grabbing:
-				_turn = _mouse.x
-			target.report(self, _turn)
+				_drag = _mouse
+			target.report(self, _drag)
 	_mouse = Vector2.ZERO

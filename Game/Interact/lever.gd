@@ -1,17 +1,17 @@
 extends Interactable
 
-@export var target_min : float = 340.0
-@export var target_max : float = 360.0
-@export var max_angle : float = 360.0
+@export var target_min : float = 135.0
+@export var target_max : float = 150.0
+@export var max_angle : float = 150.0
 @export var sensitivity : float = 1.0
 @export var resistance : float = 10.0
 @export var return_speed : float = 0.0
 
 @export var done_color : Color = Color(0.2, 1, 0.3)
-@export var idle_color : Color = Color(0.75, 0.62, 0.25)
+@export var idle_color : Color = Color(0.85, 0.25, 0.2)
 
-@onready var wheel = $Wheel
-@onready var rim = $Wheel/Rim
+@onready var pivot = $Pivot
+@onready var knob = $Pivot/Knob
 
 var angle = 0.0
 
@@ -20,14 +20,14 @@ var _material
 
 func setup():
 	_material = StandardMaterial3D.new()
-	rim.material_override = _material
+	knob.material_override = _material
 	_paint()
 
 func grabs():
 	return true
 
 func on_drag(_agent, delta):
-	_velocity += delta.x * sensitivity
+	_velocity += delta.y * sensitivity
 
 func on_hold(count):
 	var step = 1.0 / Engine.physics_ticks_per_second
@@ -52,7 +52,7 @@ func reset_state():
 	_paint()
 
 func _process(_delta):
-	wheel.rotation.z = -deg_to_rad(angle)
+	pivot.rotation.z = -deg_to_rad(angle)
 
 func _paint():
 	var done = is_active()
