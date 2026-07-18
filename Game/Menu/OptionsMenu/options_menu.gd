@@ -29,9 +29,12 @@ var possible_fps : Dictionary[String, int] = {
 func _ready() -> void:
 	configure_resolution()
 	configure_fps()
-	resolution_button.item_selected.connect(_on_resolution_selected)
-	fps_button.item_selected.connect(_on_fps_selected)
+	resolution_button.item_selected.connect(on_resolution_selected)
+	fps_button.item_selected.connect(on_fps_selected)
 	back_button.pressed.connect(set_invisible)
+	main_volume_slider.value_changed.connect(on_master_sound_update)
+	music_slider.value_changed.connect(on_music_sound_update)
+	sfx_slider.value_changed.connect(on_sfx_sound_update)
 
 func set_invisible():
 	visible = false
@@ -46,14 +49,29 @@ func configure_fps() -> void:
 	for fps in possible_fps.keys():
 		fps_button.add_item(fps)
 
-func _on_resolution_selected(index: int) -> void:
+func on_resolution_selected(index: int) -> void:
 	var resolution_value_string : String = resolution_button.get_item_text(index)
 	var resolution_value = possible_resolutions.get(resolution_value_string, Vector2i(1920, 1080))
 	DisplayServer.window_set_size(resolution_value)
 
-func _on_fps_selected(index : int) -> void:
+func on_fps_selected(index : int) -> void:
 	var fps_value_string : String = fps_button.get_item_text(index)
 	Engine.max_fps = possible_fps.get(fps_value_string, 0)
+
+func on_master_sound_update(value : float) -> void:
+	var new_volume : float = (value / 100.0) * 80 - 80
+	AudioServer.set_bus_volume_db(0, new_volume)
+	main_volume_value.text = str(int(value)) + "%"
+
+func on_music_sound_update(value : float) -> void:
+	var new_volume : float = (value / 100.0) * 80 - 80
+	AudioServer.set_bus_volume_db(1, new_volume)
+	music_value.text = str(int(value)) + "%"
+
+func on_sfx_sound_update(value : float) -> void:
+	var new_volume : float = (value / 100.0) * 80 - 80
+	AudioServer.set_bus_volume_db(2, new_volume)
+	sfx_value.text = str(int(value)) + "%"
 
 func _unhandled_key_input(event: InputEvent) -> void:
 	if event.is_action_pressed("Esc"):
