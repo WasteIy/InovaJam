@@ -3,20 +3,40 @@
 [ext_resource type="PackedScene" uid="uid://dvf6kpxsqwanp" path="res://Game/TelevisionScene/TvScene.tscn" id="1_ooa7j"]
 [ext_resource type="Shader" uid="uid://b4d4biafofcu3" path="res://Game/TelevisionScene/TV_shader.gdshader" id="2_dgqyi"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_e0qax"]
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_dgqyi"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_cy517"]
+sky_material = SubResource("ProceduralSkyMaterial_dgqyi")
+
+[sub_resource type="Environment" id="Environment_e0qax"]
+background_mode = 2
+sky = SubResource("Sky_cy517")
+glow_enabled = true
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_dgqyi"]
 viewport_path = NodePath("Node2D")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cy517"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("2_dgqyi")
-shader_parameter/main_tex = SubResource("ViewportTexture_e0qax")
+shader_parameter/main_tex = SubResource("ViewportTexture_dgqyi")
+shader_parameter/scanline_count = 20.0
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_capps"]
 subdivide_width = 16
 subdivide_depth = 16
 
 [node name="Node2D" type="Node3D" unique_id=784057873]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1024105921]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=721957916]
+environment = SubResource("Environment_e0qax")
 
 [node name="Node2D" parent="." unique_id=507120892 instance=ExtResource("1_ooa7j")]
 
