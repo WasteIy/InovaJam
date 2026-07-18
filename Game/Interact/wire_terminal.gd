@@ -10,6 +10,8 @@ const WIRE_COLORS = [
 ]
 
 const IDLE_ENERGY = 0.12
+const LIVE_ENERGY = 0.7
+
 const SELECTED_ENERGY = 0.7
 
 @export var wire_id : int = 0 : set = _set_wire_id
