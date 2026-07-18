@@ -31,12 +31,10 @@ emission_energy_multiplier = 0.35
 [sub_resource type="StandardMaterial3D" id="NeedleMat"]
 albedo_color = Color(0.95, 0.3, 0.25, 1)
 
-[node name="Pressure Valve" type="Node3D"]
+[node name="Pressure Valve" type="StaticBody3D"]
 script = ExtResource("1")
 
-[node name="Body" type="StaticBody3D" parent="."]
-
-[node name="Collision" type="CollisionShape3D" parent="Body"]
+[node name="Collision" type="CollisionShape3D" parent="."]
 shape = SubResource("FaceShape")
 
 [node name="Dial" type="MeshInstance3D" parent="."]

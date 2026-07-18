@@ -16,41 +16,36 @@ var stabilized = false
 var _strikes = 0
 var _materials = []
 
-func _ready():
-	super._ready()
+func setup():
 	for light in lights:
 		var material = StandardMaterial3D.new()
 		light.material_override = material
 		_materials.append(material)
 	_paint_lights()
 
-func report(agent):
-	var held = _reports.has(agent) and _reports[agent] >= TimeLoop.tick - 1
-	super.report(agent)
-	if not held:
-		_press()
-
-func reset_state():
-	stabilized = false
-	_strikes = 0
-	_paint_lights()
-
-func _physics_process(delta):
-	super._physics_process(delta)
-	needle.rotation.z = -_offset() * MAX_ANGLE
-
-func _offset():
-	if stabilized:
-		return 0.0
-	return sin(TimeLoop.tick * SPEED)
-
-func _press():
+func on_press(_agent):
 	if stabilized or absf(_offset()) > GREEN_ZONE:
 		return
 	_strikes += 1
 	if _strikes >= STRIKES_TO_STABILIZE:
 		stabilized = true
 	_paint_lights()
+
+func is_active():
+	return stabilized
+
+func reset_state():
+	stabilized = false
+	_strikes = 0
+	_paint_lights()
+
+func _process(_delta):
+	needle.rotation.z = -_offset() * MAX_ANGLE
+
+func _offset():
+	if stabilized:
+		return 0.0
+	return sin(TimeLoop.tick * SPEED)
 
 func _paint_lights():
 	for i in _materials.size():

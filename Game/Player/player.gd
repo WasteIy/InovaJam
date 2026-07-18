@@ -8,7 +8,11 @@ const SPEED = 4.0
 @onready var ray = $Head/Ray
 
 var frames = []
+
 var _action
+var _turn = 0.0
+var _grabbing = false
+var _mouse = Vector2.ZERO
 var _spawn_position
 var _spawn_yaw
 
@@ -24,6 +28,7 @@ func capture():
 		"yaw": rotation.y,
 		"pitch": head.rotation.x,
 		"act": _action,
+		"turn": _turn,
 	})
 
 func reset():
@@ -35,8 +40,10 @@ func reset():
 
 func _unhandled_input(event):
 	if event is InputEventMouseMotion:
-		rotate_y(-event.relative.x * MOUSE_SENSITIVITY)
-		head.rotation.x = clamp(head.rotation.x - event.relative.y * MOUSE_SENSITIVITY, -1.5, 1.5)
+		_mouse += event.relative
+		if not _grabbing:
+			rotate_y(-event.relative.x * MOUSE_SENSITIVITY)
+			head.rotation.x = clamp(head.rotation.x - event.relative.y * MOUSE_SENSITIVITY, -1.5, 1.5)
 	if event.is_action_pressed("rewind"):
 		TimeLoop.rewind()
 
@@ -50,8 +57,14 @@ func _physics_process(delta):
 	move_and_slide()
 
 	_action = null
+	_turn = 0.0
+	_grabbing = false
 	if Input.is_action_pressed("interact") and ray.is_colliding():
-		var target = ray.get_collider().get_parent()
+		var target = ray.get_collider()
 		if target is Interactable:
 			_action = target.get_path()
-			target.report(self)
+			_grabbing = target.grabs()
+			if _grabbing:
+				_turn = _mouse.x
+			target.report(self, _turn)
+	_mouse = Vector2.ZERO

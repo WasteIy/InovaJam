@@ -1,16 +1,37 @@
 class_name Interactable
-extends Node3D
+extends StaticBody3D
 
 var _reports = {}
 
 func _ready():
 	TimeLoop.loop_reset.connect(_on_loop_reset)
+	setup()
 
-func report(agent):
+func report(agent, turn = 0.0):
+	var was_held = _reports.has(agent) and _reports[agent] >= TimeLoop.tick - 1
 	_reports[agent] = TimeLoop.tick
+	if not was_held:
+		on_press(agent)
+	if turn != 0.0:
+		on_turn(agent, turn)
 
-func evaluate(_count):
+func setup():
 	pass
+
+func grabs():
+	return false
+
+func on_press(_agent):
+	pass
+
+func on_hold(_count):
+	pass
+
+func on_turn(_agent, _amount):
+	pass
+
+func is_active():
+	return false
 
 func reset_state():
 	pass
@@ -22,7 +43,7 @@ func _physics_process(_delta):
 			count += 1
 		else:
 			_reports.erase(agent)
-	evaluate(count)
+	on_hold(count)
 
 func _on_loop_reset():
 	_reports.clear()

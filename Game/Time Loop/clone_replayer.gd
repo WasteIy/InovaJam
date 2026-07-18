@@ -16,4 +16,4 @@ func apply(tick):
 	rotation.y = f["yaw"]
 	head.rotation.x = f["pitch"]
 	if f["act"]:
-		get_node(f["act"]).report(self)
+		get_node(f["act"]).report(self, f["turn"])
