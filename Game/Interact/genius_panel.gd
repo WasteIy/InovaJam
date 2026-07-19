@@ -22,6 +22,8 @@ var _lit_button
 var _flash_ticks_left = 0
 var _blinking_error = false
 
+@onready var audio_player: AudioStreamPlayer3D = $AudioPlayer
+
 func _ready():
 	for child in get_children():
 		if child is GeniusButton:
@@ -47,6 +49,8 @@ func on_button_pressed(button, _agent):
 		_light(button)
 		_flash_ticks_left = press_flash_ticks
 		_phase_tick = 0
+		audio_player.pitch_scale = 0.8 + 0.1 * _input_index
+		audio_player.play()
 	if _input_index < _round:
 		return
 	_round += 1
@@ -85,6 +89,8 @@ func _update_showing():
 	if elapsed % step < flash_ticks:
 		_revealed = index + 1
 		_light(_sequence[index])
+		#audio_player.pitch_scale = 0.8 + 0.1 * index
+		#audio_player.play()
 	else:
 		_light(null)
 

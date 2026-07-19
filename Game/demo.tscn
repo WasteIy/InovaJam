@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://cfqwece225i8f" path="res://Game/demo.gd" id="1"]
 [ext_resource type="Script" uid="uid://c7mfja2fr8dst" path="res://Game/Interact/hold_button.gd" id="2"]
 [ext_resource type="PackedScene" path="res://Game/Player/player.tscn" id="4"]
-[ext_resource type="PackedScene" path="res://Game/Interact/pressure_valve.tscn" id="5"]
+[ext_resource type="PackedScene" uid="uid://dlnk0kpemrbh1" path="res://Game/Interact/pressure_valve.tscn" id="5"]
 [ext_resource type="PackedScene" uid="uid://choedg8oxlur6" path="res://Game/Interact/turn_valve.tscn" id="6"]
 [ext_resource type="PackedScene" uid="uid://c61erbvd24gh8" path="res://Game/Interact/lever.tscn" id="7"]
 [ext_resource type="Script" uid="uid://duw5ogh6gfafm" path="res://Game/Interact/multi_lock.gd" id="8"]
