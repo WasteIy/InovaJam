@@ -90,13 +90,13 @@ radius = 0.04248047
 script = ExtResource("1_r2qnh")
 
 [node name="Cap" type="MeshInstance3D" parent="." unique_id=1438185324]
-transform = Transform3D(1, 0, 0, 0, 4.371139e-08, 1, 0, -1, 4.371139e-08, 0, 2.719462e-07, 0.07055033)
+transform = Transform3D(2, 0, 0, 0, -8.742278e-08, 2, 0, -2, -8.742278e-08, 0, 2.719462e-07, 0.07055033)
 mesh = SubResource("ArrayMesh_8pg7n")
 
 [node name="Base" type="MeshInstance3D" parent="." unique_id=1334139573]
-transform = Transform3D(1, 0, 0, 0, 4.371139e-08, 1, 0, -1, 4.371139e-08, 0, 2.719462e-07, 0.07055033)
+transform = Transform3D(2, 0, 0, 0, -8.742278e-08, 2, 0, -2, -8.742278e-08, 0, 2.719462e-07, 0.07055033)
 mesh = SubResource("ArrayMesh_ucrgp")
 
 [node name="Collision" type="CollisionShape3D" parent="." unique_id=1943123433]
-transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 2.719462e-07, 0.03221018)
+transform = Transform3D(2, 0, 0, 0, -8.742278e-08, -2, 0, 2, -8.742278e-08, 0, 2.719462e-07, 0.03221018)
 shape = SubResource("CylinderShape3D_3qc6h")

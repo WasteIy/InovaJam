@@ -1361,4 +1361,5 @@ mesh = SubResource("ArrayMesh_hkl51")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1749310055]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 17.5005, 5)
+visible = false
 size = Vector3(15, 0.001, 19)
