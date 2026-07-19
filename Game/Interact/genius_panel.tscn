@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://5e7anu0s1jro" path="res://Game/Interact/genius_panel.gd" id="1"]
 [ext_resource type="Script" uid="uid://c2wxk6qfy6jp7" path="res://Game/Interact/genius_button.gd" id="2"]
-[ext_resource type="AudioStream" uid="uid://dbptlo4rj26i1" path="res://Assets/Sounds/GeniusSound.mp3" id="3_c0gcm"]
+[ext_resource type="AudioStream" path="res://Assets/Sounds/GeniusSound.wav" id="3_c0gcm"]
 
 [sub_resource type="StandardMaterial3D" id="BackingMaterial"]
 albedo_color = Color(0.11, 0.11, 0.13, 1)

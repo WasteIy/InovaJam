@@ -80,6 +80,10 @@ debug_prev_phase={
 ]
 }
 
+[audio]
+
+driver/output_latency=8
+
 [physics]
 
 3d/physics_engine="Jolt Physics"
