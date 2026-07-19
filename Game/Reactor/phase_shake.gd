@@ -42,6 +42,8 @@ func _process(delta):
 	transform = shaken
 
 func _target_shake():
+	if Reactor.is_resolved:
+		return 0.0
 	if Reactor.current_phase == Reactor.Phase.CRITICAL:
 		return critical_shake
 	if Reactor.current_phase == Reactor.Phase.ACTIVE:

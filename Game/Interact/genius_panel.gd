@@ -2,6 +2,8 @@ extends Node3D
 
 enum { SHOWING, LISTENING, ROUND_DONE, FAILED, SOLVED }
 
+const VOICES = 4
+
 @export var sequence_length : int = 4
 @export var flash_ticks : int = 26
 @export var gap_ticks : int = 14
@@ -22,7 +24,11 @@ var _lit_button
 var _flash_ticks_left = 0
 var _blinking_error = false
 
-@onready var audio_player: AudioStreamPlayer3D = $AudioPlayer
+@onready var audio_player = $AudioPlayer
+
+var _voices = []
+var _next_voice = 0
+
 
 func _ready():
 	for child in get_children():
@@ -30,7 +36,18 @@ func _ready():
 			_buttons.append(child)
 	for i in sequence_length:
 		_sequence.append(_buttons[randi() % _buttons.size()])
+	_voices.append(audio_player)
+	for i in VOICES - 1:
+		var voice = audio_player.duplicate()
+		add_child(voice)
+		_voices.append(voice)
 	TimeLoop.loop_reset.connect(_on_loop_reset)
+
+func _play_tone(index):
+	var voice = _voices[_next_voice]
+	_next_voice = (_next_voice + 1) % _voices.size()
+	voice.pitch_scale = 0.8 + 0.1 * index
+	voice.play()
 
 func is_active():
 	return _state == SOLVED
@@ -45,12 +62,11 @@ func on_button_pressed(button, _agent):
 		_fail()
 		return
 	_input_index += 1
+	_play_tone(_input_index)
 	if _state == LISTENING:
 		_light(button)
 		_flash_ticks_left = press_flash_ticks
 		_phase_tick = 0
-		audio_player.pitch_scale = 0.8 + 0.1 * _input_index
-		audio_player.play()
 	if _input_index < _round:
 		return
 	_round += 1

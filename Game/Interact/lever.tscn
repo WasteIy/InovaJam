@@ -45,3 +45,5 @@ mesh = SubResource("KnobMesh")
 [node name="AudioPlayer" type="AudioStreamPlayer3D" parent="." unique_id=1442196792]
 stream = ExtResource("2_ghyjp")
 pitch_scale = 0.79
+unit_size = 1.0
+max_distance = 30.0

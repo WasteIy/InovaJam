@@ -27,12 +27,13 @@ subdivide_depth = 20
 script = ExtResource("1_0hj3a")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1466714557]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0692749, 0.00090026855, 0.00030517578)
+transform = Transform3D(0.343, 0, 0, 0, 0.343, 0, 0, 0, 0.343, 0.060106415, -0.00042238203, 0.00017150879)
 shape = SubResource("BoxShape3D_capps")
 
 [node name="TV Seno" parent="." unique_id=1428079436 instance=ExtResource("1_tkpvs")]
+transform = Transform3D(0.343, 0, 0, 0, 0.343, 0, 0, 0, 0.343, 0.036345124, -0.00073117414, 6.68335e-05)
 
 [node name="Screen" type="MeshInstance3D" parent="." unique_id=1507610901]
-transform = Transform3D(-2.9505186e-08, 0.67499995, 0, 2.9505186e-08, 1.2897126e-15, -0.67499995, -0.67499995, -2.9505186e-08, -2.9505186e-08, 0.096684575, -0.004238963, 0)
+transform = Transform3D(-1.0120279e-08, 0.23152497, -1.0120279e-08, 0, -1.0120279e-08, -0.23152497, -0.23152497, -1.0120279e-08, 4.423714e-16, 0.069507934, -0.0021851384, 6.68335e-05)
 material_override = SubResource("ShaderMaterial_tkpvs")
 mesh = SubResource("PlaneMesh_capps")
