@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cafuo1uce5cnq" path="res://Game/Interact/wire_panel.gd" id="1"]
 [ext_resource type="Script" uid="uid://dml1udp4vyhgv" path="res://Game/Interact/wire_terminal.gd" id="2"]
+[ext_resource type="AudioStream" uid="uid://c0jffjhkpknqc" path="res://Assets/Sounds/Rope.mp3" id="3_hlfck"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_chy5v"]
 resource_name = "M_metal"
@@ -347,3 +348,6 @@ mesh = SubResource("ArrayMesh_630q1")
 [node name="Collision" type="CollisionShape3D" parent="Target 3" unique_id=65134769]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.025859378, 0, 0)
 shape = SubResource("TerminalShape")
+
+[node name="AudioPlayer" type="AudioStreamPlayer3D" parent="." unique_id=1414644505]
+stream = ExtResource("3_hlfck")

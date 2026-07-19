@@ -1,25 +1,26 @@
-[gd_scene load_steps=9 format=3]
+[gd_scene format=3 uid="uid://brvf8a1e8wov6"]
 
-[ext_resource type="Script" path="res://Game/Interact/genius_panel.gd" id="1"]
-[ext_resource type="Script" path="res://Game/Interact/genius_button.gd" id="2"]
-
-[sub_resource type="BoxMesh" id="BackingMesh"]
-size = Vector3(1.6, 1.6, 0.1)
+[ext_resource type="Script" uid="uid://5e7anu0s1jro" path="res://Game/Interact/genius_panel.gd" id="1"]
+[ext_resource type="Script" uid="uid://c2wxk6qfy6jp7" path="res://Game/Interact/genius_button.gd" id="2"]
+[ext_resource type="AudioStream" uid="uid://dbptlo4rj26i1" path="res://Assets/Sounds/GeniusSound.mp3" id="3_c0gcm"]
 
 [sub_resource type="StandardMaterial3D" id="BackingMaterial"]
 albedo_color = Color(0.11, 0.11, 0.13, 1)
 
-[sub_resource type="BoxMesh" id="ButtonMesh"]
-size = Vector3(0.55, 0.55, 0.16)
-
-[sub_resource type="BoxShape3D" id="ButtonShape"]
-size = Vector3(0.6, 0.6, 0.3)
+[sub_resource type="BoxMesh" id="BackingMesh"]
+size = Vector3(1.6, 1.6, 0.1)
 
 [sub_resource type="StandardMaterial3D" id="RedMaterial"]
 albedo_color = Color(0.9, 0.25, 0.22, 1)
 emission_enabled = true
 emission = Color(0.9, 0.25, 0.22, 1)
 emission_energy_multiplier = 0.1
+
+[sub_resource type="BoxMesh" id="ButtonMesh"]
+size = Vector3(0.55, 0.55, 0.16)
+
+[sub_resource type="BoxShape3D" id="ButtonShape"]
+size = Vector3(0.6, 0.6, 0.3)
 
 [sub_resource type="StandardMaterial3D" id="YellowMaterial"]
 albedo_color = Color(0.95, 0.8, 0.22, 1)
@@ -39,58 +40,60 @@ emission_enabled = true
 emission = Color(0.3, 0.9, 0.42, 1)
 emission_energy_multiplier = 0.1
 
-[node name="Genius Panel" type="Node3D"]
+[node name="Genius Panel" type="Node3D" unique_id=15540894]
 script = ExtResource("1")
 
-[node name="Backing" type="MeshInstance3D" parent="."]
+[node name="Backing" type="MeshInstance3D" parent="." unique_id=388148453]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1)
-mesh = SubResource("BackingMesh")
 material_override = SubResource("BackingMaterial")
+mesh = SubResource("BackingMesh")
 
-[node name="Button 0" type="StaticBody3D" parent="."]
+[node name="Button 0" type="StaticBody3D" parent="." unique_id=532439876]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.35, 0.35, 0)
 script = ExtResource("2")
-button_color = Color(0.9, 0.25, 0.22, 1)
 
-[node name="Mesh" type="MeshInstance3D" parent="Button 0"]
-mesh = SubResource("ButtonMesh")
+[node name="Mesh" type="MeshInstance3D" parent="Button 0" unique_id=1777004640]
 material_override = SubResource("RedMaterial")
+mesh = SubResource("ButtonMesh")
 
-[node name="Collision" type="CollisionShape3D" parent="Button 0"]
+[node name="Collision" type="CollisionShape3D" parent="Button 0" unique_id=81861987]
 shape = SubResource("ButtonShape")
 
-[node name="Button 1" type="StaticBody3D" parent="."]
+[node name="Button 1" type="StaticBody3D" parent="." unique_id=1920068796]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.35, 0.35, 0)
 script = ExtResource("2")
 button_color = Color(0.95, 0.8, 0.22, 1)
 
-[node name="Mesh" type="MeshInstance3D" parent="Button 1"]
-mesh = SubResource("ButtonMesh")
+[node name="Mesh" type="MeshInstance3D" parent="Button 1" unique_id=1477307426]
 material_override = SubResource("YellowMaterial")
+mesh = SubResource("ButtonMesh")
 
-[node name="Collision" type="CollisionShape3D" parent="Button 1"]
+[node name="Collision" type="CollisionShape3D" parent="Button 1" unique_id=1177966491]
 shape = SubResource("ButtonShape")
 
-[node name="Button 2" type="StaticBody3D" parent="."]
+[node name="Button 2" type="StaticBody3D" parent="." unique_id=1768321768]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.35, -0.35, 0)
 script = ExtResource("2")
 button_color = Color(0.25, 0.5, 1, 1)
 
-[node name="Mesh" type="MeshInstance3D" parent="Button 2"]
-mesh = SubResource("ButtonMesh")
+[node name="Mesh" type="MeshInstance3D" parent="Button 2" unique_id=1437499395]
 material_override = SubResource("BlueMaterial")
+mesh = SubResource("ButtonMesh")
 
-[node name="Collision" type="CollisionShape3D" parent="Button 2"]
+[node name="Collision" type="CollisionShape3D" parent="Button 2" unique_id=1499148467]
 shape = SubResource("ButtonShape")
 
-[node name="Button 3" type="StaticBody3D" parent="."]
+[node name="Button 3" type="StaticBody3D" parent="." unique_id=378891992]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.35, -0.35, 0)
 script = ExtResource("2")
 button_color = Color(0.3, 0.9, 0.42, 1)
 
-[node name="Mesh" type="MeshInstance3D" parent="Button 3"]
-mesh = SubResource("ButtonMesh")
+[node name="Mesh" type="MeshInstance3D" parent="Button 3" unique_id=501513013]
 material_override = SubResource("GreenMaterial")
+mesh = SubResource("ButtonMesh")
 
-[node name="Collision" type="CollisionShape3D" parent="Button 3"]
+[node name="Collision" type="CollisionShape3D" parent="Button 3" unique_id=1360507039]
 shape = SubResource("ButtonShape")
+
+[node name="AudioPlayer" type="AudioStreamPlayer3D" parent="." unique_id=1832444166]
+stream = ExtResource("3_c0gcm")

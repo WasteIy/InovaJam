@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3]
+[gd_scene format=3 uid="uid://choedg8oxlur6"]
 
-[ext_resource type="Script" path="res://Game/Interact/turn_valve.gd" id="1"]
+[ext_resource type="Script" uid="uid://b4o4r30odmgmt" path="res://Game/Interact/turn_valve.gd" id="1"]
+[ext_resource type="AudioStream" uid="uid://cse8nhtr45xwe" path="res://Assets/Sounds/enferrujado_meio.wav" id="2_py6jq"]
 
 [sub_resource type="BoxShape3D" id="FaceShape"]
 size = Vector3(1.3, 1.3, 0.4)
@@ -12,34 +13,38 @@ outer_radius = 0.6
 [sub_resource type="BoxMesh" id="SpokeMesh"]
 size = Vector3(1.15, 0.09, 0.09)
 
-[sub_resource type="StandardMaterial3D" id="HubMat"]
-albedo_color = Color(0.3, 0.3, 0.33, 1)
-
 [sub_resource type="CylinderMesh" id="HubMesh"]
 top_radius = 0.13
 bottom_radius = 0.13
 height = 0.22
 
-[node name="Turn Valve" type="StaticBody3D"]
+[sub_resource type="StandardMaterial3D" id="HubMat"]
+albedo_color = Color(0.3, 0.3, 0.33, 1)
+
+[node name="Turn Valve" type="StaticBody3D" unique_id=2084925072]
 script = ExtResource("1")
 
-[node name="Collision" type="CollisionShape3D" parent="."]
+[node name="Collision" type="CollisionShape3D" parent="." unique_id=228547810]
 shape = SubResource("FaceShape")
 
-[node name="Wheel" type="Node3D" parent="."]
+[node name="Wheel" type="Node3D" parent="." unique_id=608055428]
 
-[node name="Rim" type="MeshInstance3D" parent="Wheel"]
+[node name="Rim" type="MeshInstance3D" parent="Wheel" unique_id=1710276270]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 mesh = SubResource("RimMesh")
 
-[node name="Spoke A" type="MeshInstance3D" parent="Wheel"]
+[node name="Spoke A" type="MeshInstance3D" parent="Wheel" unique_id=799509936]
 mesh = SubResource("SpokeMesh")
 
-[node name="Spoke B" type="MeshInstance3D" parent="Wheel"]
+[node name="Spoke B" type="MeshInstance3D" parent="Wheel" unique_id=1051912717]
 transform = Transform3D(0, -1, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("SpokeMesh")
 
-[node name="Hub" type="MeshInstance3D" parent="."]
+[node name="Hub" type="MeshInstance3D" parent="." unique_id=1669627918]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
 mesh = SubResource("HubMesh")
 surface_material_override/0 = SubResource("HubMat")
+
+[node name="AudioPlayer" type="AudioStreamPlayer3D" parent="." unique_id=1611059295]
+stream = ExtResource("2_py6jq")
+bus = &"SFX"

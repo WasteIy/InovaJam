@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://dlnk0kpemrbh1"]
 
 [ext_resource type="Script" uid="uid://becvagqywfyoc" path="res://Game/Interact/pressure_valve.gd" id="1"]
+[ext_resource type="AudioStream" uid="uid://ctwian0af8mhh" path="res://Assets/Sounds/BotaoPress.wav" id="2_r7rhp"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_reyrr"]
 resource_name = "M_lamp"
@@ -186,3 +187,6 @@ mesh = SubResource("CapsuleMesh_vkte0")
 [node name="Light 3" type="MeshInstance3D" parent="Lights" unique_id=1993664633]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.10000001, -0.8, 2.9802322e-08)
 mesh = SubResource("CapsuleMesh_vkte0")
+
+[node name="AudioPlayer" type="AudioStreamPlayer3D" parent="." unique_id=1390682543]
+stream = ExtResource("2_r7rhp")

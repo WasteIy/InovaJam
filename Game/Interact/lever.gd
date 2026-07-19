@@ -13,6 +13,10 @@ extends Interactable
 @onready var pivot = $Pivot
 @onready var knob = $Pivot/Knob
 
+@onready var audio_player: AudioStreamPlayer3D = $AudioPlayer
+
+var was_active = false
+
 ## Onde a alavanca tá agora, em graus
 var current_angle = 0.0
 
@@ -40,6 +44,14 @@ func on_hold(holder_count):
 	current_angle = clampf(current_angle + move * step, 0.0, max_angle)
 	if current_angle <= 0.0 or current_angle >= max_angle:
 		_angular_velocity = 0.0
+	
+	if is_active():
+		if !was_active:
+			was_active = true
+			audio_player.play()
+	else:
+		was_active = false
+	
 	_refresh_color()
 
 func is_active():

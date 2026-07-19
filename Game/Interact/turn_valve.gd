@@ -13,6 +13,12 @@ extends Interactable
 @onready var wheel = $Wheel
 @onready var rim = $Wheel/Rim
 
+
+var is_rotating = false
+var is_playing_sound = false
+const sound_loop = preload("uid://5dgu5lcflimo")
+@onready var audio_player: AudioStreamPlayer3D = $AudioPlayer
+
 ## Quanto a roda tá girada agora, em graus
 var current_angle = 0.0
 
@@ -37,10 +43,41 @@ func on_hold(holder_count):
 	var move = _angular_velocity
 	if holder_count == 0:
 		move -= return_speed
+		is_rotating = false
+		stop_sound()
+	else:
+		is_rotating = true
+		start_sound()
+		update_sound()
 	current_angle = clampf(current_angle + move * step, 0.0, max_angle)
 	if current_angle <= 0.0 or current_angle >= max_angle:
 		_angular_velocity = 0.0
+		
+	if abs(_angular_velocity) >= 5:
+		start_sound()
+		update_sound()
+	else:
+		stop_sound()
+	
 	_refresh_color()
+
+func stop_sound():
+	is_playing_sound = false
+	var tween = create_tween()
+	tween.tween_property(audio_player, "volume_db", -50, 0.5)
+	audio_player.stop()
+
+func update_sound():
+	var velocity_percentage = min(abs(_angular_velocity), 200.0) / 200.0
+	audio_player.pitch_scale = 0.90 + velocity_percentage * 0.1
+	audio_player.volume_db = -30 + (30 * velocity_percentage)
+
+func start_sound():
+	if is_playing_sound:
+		return
+	is_playing_sound = true
+	audio_player.stream = sound_loop
+	audio_player.play()
 
 func is_active():
 	return current_angle >= solved_angle_min and current_angle <= solved_angle_max
