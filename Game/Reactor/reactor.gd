@@ -10,23 +10,16 @@ enum Phase { CALM, ACTIVE, CRITICAL }
 var current_phase = Phase.CALM
 var is_resolved = false
 
-var _debug_offset = 0
 
 func resolve():
 	is_resolved = true
 	current_phase = Phase.CALM
 	phase_changed.emit(current_phase)
 
-func _unhandled_input(event):
-	if event.is_action_pressed("debug_next_phase"):
-		_debug_offset = clampi(_debug_offset + 1, -2, 2)
-	if event.is_action_pressed("debug_prev_phase"):
-		_debug_offset = clampi(_debug_offset - 1, -2, 2)
-
 func _physics_process(_delta):
 	if is_resolved:
 		return
-	var phase = clampi(_phase_from_time() + _debug_offset, Phase.CALM, Phase.CRITICAL)
+	var phase = _phase_from_time()
 	if phase == current_phase:
 		return
 	current_phase = phase

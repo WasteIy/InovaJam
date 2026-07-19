@@ -14,9 +14,10 @@ extends AudioStreamPlayer3D
 
 var _noise = FastNoiseLite.new()
 var _wait = 0.0
-var _cycle = 0
+var cycle = 0
 
 func _ready():
+	add_to_group("alarm")
 	_noise.seed = randi()
 	_noise.frequency = 1.0
 
@@ -26,13 +27,13 @@ func _process(delta):
 	_wait -= delta
 	if _wait > 0.0:
 		return
-	_cycle += 1
+	cycle += 1
 	var heat = pow(_progress(), gap_accel)
-	pitch_scale = 1.0 + _noise.get_noise_1d(_cycle * 1.7) * pitch_drift
-	volume_db = lerpf(start_volume, end_volume, heat) + _noise.get_noise_1d(_cycle * 2.3 + 100.0) * volume_drift
+	pitch_scale = 1.0 + _noise.get_noise_1d(cycle * 1.7) * pitch_drift
+	volume_db = lerpf(start_volume, end_volume, heat) + _noise.get_noise_1d(cycle * 2.3 + 100.0) * volume_drift
 	play()
 	var gap = lerpf(start_gap, end_gap, heat)
-	gap *= 1.0 + _noise.get_noise_1d(_cycle * 3.1 + 200.0) * gap_drift
+	gap *= 1.0 + _noise.get_noise_1d(cycle * 3.1 + 200.0) * gap_drift
 	_wait = maxf(stream.get_length() / pitch_scale + gap, min_interval)
 
 func _progress():

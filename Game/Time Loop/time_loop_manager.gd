@@ -101,5 +101,6 @@ func _silence_all(node):
 
 func _despawn_clones():
 	for clone in active_clones:
-		clone.queue_free()
+		if is_instance_valid(clone):
+			clone.queue_free()
 	active_clones.clear()
