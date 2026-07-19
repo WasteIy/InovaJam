@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bcambydbswwvo"]
 
 [ext_resource type="Shader" uid="uid://b7qv47nasepc8" path="res://Game/VFX_timeloop.gdshader" id="1_dg2c4"]
+[ext_resource type="Script" uid="uid://jr5p2dj3ll3r" path="res://Game/vfx_timeloop.gd" id="1_emv2h"]
 [ext_resource type="Shader" uid="uid://5lwt70w6rv13" path="res://Game/Shockwave_Timeloop.gdshader" id="2_2enrt"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dg2c4"]
@@ -24,7 +25,7 @@ shader_parameter/feather = 0.135
 
 [sub_resource type="Animation" id="Animation_i5ni2"]
 resource_name = "Flash"
-length = 0.19999999999999998
+length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -198,6 +199,7 @@ _data = {
 }
 
 [node name="VFX_timeloop" type="CanvasLayer" unique_id=963533723]
+script = ExtResource("1_emv2h")
 
 [node name="BorderEffect" type="Panel" parent="." unique_id=147090732]
 visible = false
