@@ -2,13 +2,15 @@
 
 [ext_resource type="Script" uid="uid://cfqwece225i8f" path="res://Game/demo.gd" id="1"]
 [ext_resource type="Script" uid="uid://c7mfja2fr8dst" path="res://Game/Interact/hold_button.gd" id="2"]
-[ext_resource type="PackedScene" path="res://Game/Player/player.tscn" id="4"]
+[ext_resource type="PackedScene" uid="uid://3aa28otrrt0y" path="res://Game/Player/player.tscn" id="4"]
 [ext_resource type="PackedScene" path="res://Game/Interact/pressure_valve.tscn" id="5"]
 [ext_resource type="PackedScene" path="res://Game/Interact/turn_valve.tscn" id="6"]
 [ext_resource type="PackedScene" uid="uid://c61erbvd24gh8" path="res://Game/Interact/lever.tscn" id="7"]
 [ext_resource type="Script" uid="uid://duw5ogh6gfafm" path="res://Game/Interact/multi_lock.gd" id="8"]
 [ext_resource type="PackedScene" uid="uid://rgq27l6mnp2w" path="res://Game/Interact/wire_panel.tscn" id="9"]
 [ext_resource type="PackedScene" path="res://Game/Interact/genius_panel.tscn" id="10"]
+[ext_resource type="PackedScene" uid="uid://cjbrtq2ytqmap" path="res://Game/Interact/key.tscn" id="11"]
+[ext_resource type="PackedScene" path="res://Game/Interact/keyhole.tscn" id="12"]
 
 [sub_resource type="Environment" id="Env_1"]
 ambient_light_source = 2
@@ -54,6 +56,7 @@ mesh = SubResource("PlaneMesh_g4v7s")
 
 [node name="Player" parent="." unique_id=1972873706 instance=ExtResource("4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.4703484e-08, 1)
+collision_layer = 1
 
 [node name="Button A" type="StaticBody3D" parent="." unique_id=485087377]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1.5, -3)
@@ -133,4 +136,22 @@ door = NodePath("../Genius Door")
 
 [node name="Genius Door" type="MeshInstance3D" parent="." unique_id=500593656]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.25, 2.5, -7.5)
+mesh = SubResource("BoxMesh_2gbv4")
+
+[node name="Key A" parent="." unique_id=247595522 instance=ExtResource("11")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 1.2, 0)
+
+[node name="Keyhole A" parent="." unique_id=1256899101 instance=ExtResource("12")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 1.6, -6)
+
+[node name="Keyhole B" parent="." unique_id=107474040 instance=ExtResource("12")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 1.6, -6)
+
+[node name="Key Lock" type="Node3D" parent="." unique_id=933737535]
+script = ExtResource("8")
+required_parts = Array[NodePath]([NodePath("../Keyhole A"), NodePath("../Keyhole B")])
+door = NodePath("../Key Door")
+
+[node name="Key Door" type="MeshInstance3D" parent="." unique_id=903317967]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.75, 2.5, -7.5)
 mesh = SubResource("BoxMesh_2gbv4")
