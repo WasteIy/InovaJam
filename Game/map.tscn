@@ -1112,6 +1112,10 @@ mesh = SubResource("ArrayMesh_rea88")
 transform = Transform3D(0, 3.0946405, 0, 0, 0, -3.0946405, -3.0946405, 0, 0, -12.475518, 21.222183, -1.604269)
 mesh = SubResource("ArrayMesh_rea88")
 
+[node name="Plane_008" type="MeshInstance3D" parent="." unique_id=2085372077]
+transform = Transform3D(0, 3.0946405, 0, 0, 0, -3.0946405, -3.0946405, 0, 0, -12.475518, 14.222183, 6.395731)
+mesh = SubResource("ArrayMesh_rea88")
+
 [node name="Plane_005" type="MeshInstance3D" parent="." unique_id=465058280]
 transform = Transform3D(3.094641, -1.3527104e-07, 0, 0, 0, -3.094641, 1.3527104e-07, 3.094641, 0, -2.8755183, 21.222183, 8.595731)
 mesh = SubResource("ArrayMesh_rea88")
