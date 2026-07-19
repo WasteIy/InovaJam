@@ -4,7 +4,7 @@ extends Node
 signal loop_reset
 
 ## Quanto tempo você tem antes do loop voltar sozinho
-@export var loop_duration_seconds : float = 30.0
+@export var loop_duration_seconds : float = 15.0
 
 ## Ticks de física desde que esse loop começou. Gravação e replay se guiam por isso
 var current_tick = 0
