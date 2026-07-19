@@ -726,38 +726,6 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_fxvj8")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vm5bk"]
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_xylrd"]
-_surfaces = [{
-"aabb": AABB(-1.6179035, 0, -1, 2.6179035, 1.6620805, 2),
-"format": 34896613377,
-"index_count": 18,
-"index_data": PackedByteArray("AAABAAIAAgADAAAAAgAEAAMAAAAFAAEABQAGAAEABQAHAAYA"),
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 8,
-"vertex_data": PackedByteArray("AAAAAP//AAD//wAAAAAAAP//AAD//wAAAAD/////AAD///////8AAAAAAAAAAAAA/////wAAAAAAAP//AAAAAA==")
-}]
-blend_shape_mode = 0
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_o12fa"]
-resource_name = "map_blockout_Plane_009"
-_surfaces = [{
-"aabb": AABB(-1.6179035, 0, -1, 2.6179035, 1.6620805, 2),
-"attribute_data": PackedByteArray("AAD/////AAD/////AAAAAAAAAAD//wAA//8AAAAAAAD/////AAD//wAA////////"),
-"format": 34896613399,
-"index_count": 18,
-"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkA"),
-"material": SubResource("StandardMaterial3D_vm5bk"),
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 12,
-"vertex_data": PackedByteArray("AAAAAP///7///wAAAAD/v///AAD///+/AAAAAAAA/78AAAAAAAD+f/////8AAP5///8AAAAA/n8AAP//AAD+f///AAD/////AAD///////8AAAAA////////////////////f////3////9/////f/9/////f////3////9///////9/////f////3////9/")
-}]
-blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_xylrd")
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cq7k5"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_0v4gk"]
@@ -849,7 +817,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_8y1of")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pnk01"]
-size = Vector3(5.7495275, 1.2609383, 0.06651211)
+size = Vector3(6.4, 1.2609383, 0.06651211)
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_0lo55"]
 _surfaces = [{
@@ -954,8 +922,8 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_jhu04")
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_ewh3l"]
-size = Vector3(2, 32.133842, 12.505748)
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_hb6cl"]
+points = PackedVector3Array(-1.1131473, -31.357815, -11.856346, 1.1497965, 0.9927826, 0.8161373, -1.1131473, 0.9927826, 0.8161373, 1.1497965, -31.357815, -10.045282, 1.1497965, -25.929096, -10.723811, -1.1131473, 0.9927826, -0.7691636, -1.1131473, -24.570333, -7.5556903, 1.1497965, 0.9927826, -0.7691636, 1.1497965, -1.0437794, 0.8161373, -1.1131473, -25.929096, -10.723811, -1.1131473, -4.439103, -0.31639767, -1.1131473, -31.357815, -10.045282, 1.1497965, -29.32442, -11.856346, 1.1497965, -2.402542, -2.126221, 1.1497965, -31.357815, -11.856346, 1.1497965, -4.439103, -0.31639767, -1.1131473, -2.402542, -2.126221, -1.1131473, -1.0437794, 0.8161373, -1.1131473, -29.32442, -11.856346, 1.1497965, -24.570333, -7.5556903, 1.1497965, -9.190023, -4.6170535, -1.1131473, -9.190023, -4.6170535)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5026y"]
 resource_name = "M_desks"
@@ -1136,16 +1104,28 @@ shape = SubResource("BoxShape3D_1x0i7")
 transform = Transform3D(0, 3.0946405, 0, 0, 0, -3.0946405, -3.0946405, 0, 0, -0.0784471, 12.222184, -1.604269)
 mesh = SubResource("ArrayMesh_rea88")
 
+[node name="Plane_003" type="MeshInstance3D" parent="." unique_id=151573384]
+transform = Transform3D(0, 3.0946405, 0, 0, 0, -3.0946405, -3.0946405, 0, 0, -0.0784471, 21.222183, -1.604269)
+mesh = SubResource("ArrayMesh_rea88")
+
+[node name="Plane_004" type="MeshInstance3D" parent="." unique_id=1147573050]
+transform = Transform3D(0, 3.0946405, 0, 0, 0, -3.0946405, -3.0946405, 0, 0, -12.475518, 21.222183, -1.604269)
+mesh = SubResource("ArrayMesh_rea88")
+
+[node name="Plane_005" type="MeshInstance3D" parent="." unique_id=465058280]
+transform = Transform3D(3.094641, -1.3527104e-07, 0, 0, 0, -3.094641, 1.3527104e-07, 3.094641, 0, -2.8755183, 21.222183, 8.595731)
+mesh = SubResource("ArrayMesh_rea88")
+
+[node name="Plane_007" type="MeshInstance3D" parent="." unique_id=1347249536]
+transform = Transform3D(3.094641, -1.3527104e-07, 0, 0, 0, -3.094641, 1.3527104e-07, 3.094641, 0, -2.8755183, 20.422184, -4.3042693)
+mesh = SubResource("ArrayMesh_rea88")
+
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="." unique_id=1585765479]
 transform = Transform3D(0, 3.0946405, 0, 0, 0, -3.0946405, -3.0946405, 0, 0, -0.07843195, 10.81404, 2.0287313)
 shape = SubResource("BoxShape3D_hb6cl")
 
 [node name="Plane_002" type="MeshInstance3D" parent="." unique_id=1075182635]
 transform = Transform3D(-1.3527104e-07, 3.0946405, -1.3527104e-07, 0, -1.3527104e-07, -3.0946405, -3.0946405, -1.3527104e-07, 5.9128846e-15, -12.463057, 12.222184, -1.604269)
-mesh = SubResource("ArrayMesh_p0hon")
-
-[node name="Plane_003" type="MeshInstance3D" parent="." unique_id=302996702]
-transform = Transform3D(-1.3527104e-07, 3.0946405, -1.3527104e-07, 0, -1.3527104e-07, -3.0946405, -3.0946405, -1.3527104e-07, 5.9128846e-15, -12.463057, 12.222184, 5.395731)
 mesh = SubResource("ArrayMesh_p0hon")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=1402312210]
@@ -1165,7 +1145,7 @@ transform = Transform3D(3.1446335, 0, 0, 0, -0.17450626, 0, 0, 0, 1.5561049, 0.2
 mesh = SubResource("ArrayMesh_xs0it")
 
 [node name="CollisionShape3D20" type="CollisionShape3D" parent="." unique_id=485058890]
-transform = Transform3D(3.1446335, 0, 0, 0, -0.17450626, 0, 0, 0, 1.5561049, -5.988254, 11.716001, 7.247595)
+transform = Transform3D(3.1446335, 0, 0, 0, -0.17450626, 0, 0, 0, 1.5561049, -5.988254, 11.616207, 7.247595)
 shape = SubResource("BoxShape3D_a5h6g")
 
 [node name="Cube_019" type="MeshInstance3D" parent="." unique_id=1301178724]
@@ -1248,10 +1228,6 @@ mesh = SubResource("ArrayMesh_4eusl")
 transform = Transform3D(0, 0, 0.09816499, 0, 0.35457748, 0, -0.5198498, 0, 0, -11.199121, 9.921956, -10.972846)
 mesh = SubResource("ArrayMesh_x6kat")
 
-[node name="Plane_007" type="MeshInstance3D" parent="." unique_id=720120365]
-transform = Transform3D(2.3809144, 0, 0, 0, 2.3809144, 0, 0, 0, 2.3809144, -14.860155, 9.213852, 1.0580196)
-mesh = SubResource("ArrayMesh_o12fa")
-
 [node name="Cube_030" type="MeshInstance3D" parent="." unique_id=81171368]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.21318, 10.363857, 6.677636)
 mesh = SubResource("ArrayMesh_cywv5")
@@ -1321,7 +1297,7 @@ transform = Transform3D(1.5838432, 0, 0, 0, 0.97048664, 0, 0, 0, 1.5838432, -11.
 mesh = SubResource("ArrayMesh_bhwh0")
 
 [node name="CollisionShape3D21" type="CollisionShape3D" parent="." unique_id=1292658855]
-transform = Transform3D(1.5838432, 0, 0, 0, 0.97048664, 0, 0, 0, 1.5838432, -7.656864, 12.377604, 6.053194)
+transform = Transform3D(1.5838432, 0, 0, 0, 0.97048664, 0, 0, 0, 1.5838432, -7.141741, 12.377604, 6.053194)
 shape = SubResource("BoxShape3D_pnk01")
 
 [node name="railing_short" type="MeshInstance3D" parent="." unique_id=1556746420]
@@ -1340,9 +1316,9 @@ shape = SubResource("ConvexPolygonShape3D_ewh3l")
 transform = Transform3D(0.9856598, 0, 0, 0, 0.07255392, 0, 0, 0, 0.3533391, -1.1192234, 11.473, 5.8042235)
 mesh = SubResource("ArrayMesh_jkrjl")
 
-[node name="CollisionShape3D23" type="CollisionShape3D" parent="." unique_id=78279286]
-transform = Transform3D(0.9856598, 0, 0, 0, 0.07255392, 0, 0, 0, 0.3533391, -1.1192234, 10.371336, 3.864276)
-shape = SubResource("BoxShape3D_ewh3l")
+[node name="CollisionShape3D23" type="CollisionShape3D" parent="." unique_id=1165298846]
+transform = Transform3D(0.9856598, 0, 0, 0, 0.07255392, 0, 0, 0, 0.3533391, -1.1192234, 11.473, 5.8042235)
+shape = SubResource("ConvexPolygonShape3D_hb6cl")
 
 [node name="pannel_secondary" type="MeshInstance3D" parent="." unique_id=1783716926]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.2045794, 10.065947, -3.4063537)
@@ -1378,3 +1354,7 @@ transform = Transform3D(-0.015949432, 0, -0.027731571, 0, 0.00063503726, 0, 0.02
 [node name="Cylinder_012" type="MeshInstance3D" parent="." unique_id=1727356918]
 transform = Transform3D(-0.08955885, 0, 0.15482318, 0, 0.025199946, 0, -0.15482318, 0, -0.08955885, -7.1692734, 10.755393, -3.9214675)
 mesh = SubResource("ArrayMesh_hkl51")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1749310055]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 17.5005, 5)
+size = Vector3(15, 0.001, 19)
