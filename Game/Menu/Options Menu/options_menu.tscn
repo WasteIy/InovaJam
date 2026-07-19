@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c311flk61k3kk"]
 
-[ext_resource type="Script" uid="uid://fxtpj67btrlg" path="res://Game/Menu/OptionsMenu/options_menu.gd" id="1_8sxoi"]
+[ext_resource type="Script" uid="uid://fxtpj67btrlg" path="res://Game/Menu/Options Menu/options_menu.gd" id="1_8sxoi"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_capps"]
 bg_color = Color(0.49, 0.49, 0.49, 1)

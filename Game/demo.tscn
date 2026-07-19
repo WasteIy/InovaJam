@@ -1,17 +1,8 @@
 [gd_scene format=4 uid="uid://cawtspt0td1el"]
 
 [ext_resource type="Script" uid="uid://cfqwece225i8f" path="res://Game/demo.gd" id="1"]
-[ext_resource type="Script" uid="uid://c7mfja2fr8dst" path="res://Game/Interact/hold_button.gd" id="2"]
 [ext_resource type="PackedScene" uid="uid://cpwelsrsbscvw" path="res://Game/map.tscn" id="2_tp6bg"]
 [ext_resource type="PackedScene" uid="uid://3aa28otrrt0y" path="res://Game/Player/player.tscn" id="4"]
-[ext_resource type="PackedScene" uid="uid://dlnk0kpemrbh1" path="res://Game/Interact/pressure_valve.tscn" id="5"]
-[ext_resource type="PackedScene" path="res://Game/Interact/turn_valve.tscn" id="6"]
-[ext_resource type="PackedScene" uid="uid://c61erbvd24gh8" path="res://Game/Interact/lever.tscn" id="7"]
-[ext_resource type="Script" uid="uid://duw5ogh6gfafm" path="res://Game/Interact/multi_lock.gd" id="8"]
-[ext_resource type="PackedScene" uid="uid://rgq27l6mnp2w" path="res://Game/Interact/wire_panel.tscn" id="9"]
-[ext_resource type="PackedScene" path="res://Game/Interact/genius_panel.tscn" id="10"]
-[ext_resource type="PackedScene" uid="uid://cjbrtq2ytqmap" path="res://Game/Interact/key.tscn" id="11"]
-[ext_resource type="PackedScene" path="res://Game/Interact/keyhole.tscn" id="12"]
 [ext_resource type="PackedScene" uid="uid://dkpqiv66vl6c0" path="res://Game/core.tscn" id="12_wfyme"]
 [ext_resource type="Script" uid="uid://cpd4tj3jonrs0" path="res://Game/Reactor/phase_shake.gd" id="14"]
 
@@ -90,12 +81,6 @@ ambient_light_source = 2
 ambient_light_color = Color(0.7, 0.72, 0.8, 1)
 ambient_light_energy = 0.8
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_c0tns"]
-size = Vector3(0.7, 0.7, 0.7)
-
-[sub_resource type="BoxMesh" id="BoxMesh_vkte0"]
-size = Vector3(0.7, 0.7, 0.7)
-
 [node name="Demo" type="Node3D" unique_id=2130005721]
 script = ExtResource("1")
 
@@ -116,100 +101,6 @@ transform = Transform3D(1, 0, 0, 0, 0.5, 0.866, 0, -0.866, 0.5, 0, 8, 4)
 [node name="Player" parent="." unique_id=1972873706 instance=ExtResource("4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.4703484e-08, 1)
 collision_layer = 1
-
-[node name="Button A" type="StaticBody3D" parent="." unique_id=485087377]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.883091, 1.5, -3)
-visible = false
-script = ExtResource("2")
-
-[node name="Collision" type="CollisionShape3D" parent="Button A" unique_id=1052829412]
-shape = SubResource("BoxShape3D_c0tns")
-
-[node name="Mesh" type="MeshInstance3D" parent="Button A" unique_id=878325706]
-mesh = SubResource("BoxMesh_vkte0")
-
-[node name="Button B" type="StaticBody3D" parent="." unique_id=229173319]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.583092, 1.5, -3)
-visible = false
-script = ExtResource("2")
-
-[node name="Collision" type="CollisionShape3D" parent="Button B" unique_id=831810271]
-shape = SubResource("BoxShape3D_c0tns")
-
-[node name="Mesh" type="MeshInstance3D" parent="Button B" unique_id=690935777]
-mesh = SubResource("BoxMesh_vkte0")
-
-[node name="Multi Lock" type="Node3D" parent="." unique_id=756868361]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.883091, 2, -5)
-visible = false
-script = ExtResource("8")
-required_parts = Array[NodePath]([NodePath("../Button A"), NodePath("../Button B")])
-
-[node name="Pressure Valve" parent="." unique_id=344320403 instance=ExtResource("5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.383091, 1.6, -3)
-visible = false
-
-[node name="Turn Valve" parent="." unique_id=392109906 instance=ExtResource("6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.083092, 1.6, -3)
-visible = false
-return_speed = 25.0
-
-[node name="Lever" parent="." unique_id=530025254 instance=ExtResource("7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.383091, 1.6, -3)
-visible = false
-friction = 20.0
-
-[node name="Lever Lock" type="Node3D" parent="." unique_id=232325654]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.883091, 0, 0)
-visible = false
-script = ExtResource("8")
-required_parts = Array[NodePath]([NodePath("../Lever")])
-
-[node name="Wire Panel A" parent="." unique_id=1415764472 instance=ExtResource("9")]
-transform = Transform3D(-8.742278e-08, 0, 1, 0, 1, 0, -1, 0, -8.742278e-08, 13.883091, 1.6, 1)
-visible = false
-
-[node name="Wire Panel B" parent="." unique_id=2105391376 instance=ExtResource("9")]
-transform = Transform3D(-8.742278e-08, 0, -1, 0, 1, 0, 1, 0, -8.742278e-08, 27.883091, 1.6, 1)
-visible = false
-
-[node name="Wire Panel C" parent="." unique_id=213161924 instance=ExtResource("9")]
-transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 20.883091, 1.6, 6)
-visible = false
-
-[node name="Wire Lock" type="Node3D" parent="." unique_id=844271950]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.883091, 0, 0)
-visible = false
-script = ExtResource("8")
-required_parts = Array[NodePath]([NodePath("../Wire Panel A"), NodePath("../Wire Panel B"), NodePath("../Wire Panel C")])
-
-[node name="Genius Panel" parent="." unique_id=269106068 instance=ExtResource("10")]
-transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 27.883091, 1.6, -3)
-visible = false
-
-[node name="Genius Lock" type="Node3D" parent="." unique_id=520869315]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.883091, 0, 0)
-visible = false
-script = ExtResource("8")
-required_parts = Array[NodePath]([NodePath("../Genius Panel")])
-
-[node name="Key A" parent="." unique_id=247595522 instance=ExtResource("11")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.383091, 1.2, 0)
-visible = false
-
-[node name="Keyhole A" parent="." unique_id=1256899101 instance=ExtResource("12")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.883091, 1.6, -6)
-visible = false
-
-[node name="Keyhole B" parent="." unique_id=107474040 instance=ExtResource("12")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.883091, 1.6, -6)
-visible = false
-
-[node name="Key Lock" type="Node3D" parent="." unique_id=933737535]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.883091, 0, 0)
-visible = false
-script = ExtResource("8")
-required_parts = Array[NodePath]([NodePath("../Keyhole A"), NodePath("../Keyhole B")])
 
 [node name="Core" parent="." unique_id=1796245259 instance=ExtResource("12_wfyme")]
 transform = Transform3D(0.165, 0, 0, 0, 0.165, 0, 0, 0, 0.165, -0.26978415, 2.2, -32.416306)

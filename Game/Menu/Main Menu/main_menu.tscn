@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dpo7isu2b6qq6"]
 
-[ext_resource type="Script" uid="uid://b5scb2n3mwoc7" path="res://Game/Menu/MainMenu/main_menu.gd" id="1_83war"]
-[ext_resource type="PackedScene" uid="uid://c311flk61k3kk" path="res://Game/Menu/OptionsMenu/options_menu.tscn" id="1_ivl0h"]
+[ext_resource type="Script" uid="uid://b5scb2n3mwoc7" path="res://Game/Menu/Main Menu/main_menu.gd" id="1_83war"]
+[ext_resource type="PackedScene" uid="uid://c311flk61k3kk" path="res://Game/Menu/Options Menu/options_menu.tscn" id="1_ivl0h"]
 
 [node name="CanvasLayer" type="CanvasLayer" unique_id=1489668487]
 
