@@ -5,8 +5,8 @@
 [ext_resource type="AudioStream" uid="uid://s1wi5luwp7d1" path="res://Assets/Sounds/key_pickup.wav" id="keysfx"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_u18ps"]
-radius = 0.072265625
-height = 0.3701172
+radius = 0.3
+height = 0.6
 
 [node name="Key" type="RigidBody3D" unique_id=692035388]
 collision_layer = 2

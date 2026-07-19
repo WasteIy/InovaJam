@@ -10,7 +10,6 @@
 [ext_resource type="Script" uid="uid://bsqvl2pabxno1" path="res://Game/Player/head_look.gd" id="head_look"]
 
 [sub_resource type="CameraAttributesPractical" id="CamAttr_1"]
-dof_blur_far_enabled = false
 dof_blur_far_distance = 14.0
 dof_blur_far_transition = 8.0
 dof_blur_amount = 0.04
@@ -1596,11 +1595,13 @@ bone_idx = 5
 
 [node name="Left" type="CSGSphere3D" parent="Character/Armature_001/Skeleton3D/Pupils" unique_id=1047016811]
 transform = Transform3D(1, 1.071021e-08, -9.685755e-08, -3.1664968e-08, 0.99999934, 1.1175871e-07, 0, 5.9604645e-08, 1.0000007, 1.5746523, 4.07148, 3.961584)
+layers = 2
 radius = 0.28407514
 material = SubResource("StandardMaterial3D_vh1aq")
 
 [node name="Right" type="CSGSphere3D" parent="Character/Armature_001/Skeleton3D/Pupils" unique_id=2104500966]
 transform = Transform3D(1, -4.656613e-10, -8.195639e-08, -3.9115548e-08, 0.9999993, 1.3411045e-07, 0, 7.4505806e-08, 1.0000001, -1.327491, 4.09182, 3.9628825)
+layers = 2
 radius = 0.27497005
 material = SubResource("StandardMaterial3D_vh1aq")
 
