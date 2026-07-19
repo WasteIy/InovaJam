@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cpwelsrsbscvw" path="res://Game/map.tscn" id="2_tp6bg"]
 [ext_resource type="PackedScene" uid="uid://3aa28otrrt0y" path="res://Game/Player/player.tscn" id="4"]
 [ext_resource type="PackedScene" uid="uid://rgq27l6mnp2w" path="res://Game/Interact/wire_panel.tscn" id="6_2gbv4"]
+[ext_resource type="PackedScene" uid="uid://dlnk0kpemrbh1" path="res://Game/Interact/pressure_valve.tscn" id="7_5xt3t"]
 [ext_resource type="PackedScene" uid="uid://dkpqiv66vl6c0" path="res://Game/core.tscn" id="12_wfyme"]
 [ext_resource type="Script" uid="uid://cpd4tj3jonrs0" path="res://Game/Reactor/phase_shake.gd" id="14"]
 
@@ -100,7 +101,7 @@ environment = SubResource("Env_1")
 transform = Transform3D(1, 0, 0, 0, 0.5, 0.866, 0, -0.866, 0.5, 0, 8, 4)
 
 [node name="Player" parent="." unique_id=1972873706 instance=ExtResource("4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.4703484e-08, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.21546847, 1)
 collision_layer = 1
 
 [node name="Core" parent="." unique_id=1796245259 instance=ExtResource("12_wfyme")]
@@ -109,4 +110,7 @@ active_intensity = 0.45
 critical_intensity = 0.8
 
 [node name="Wire Panel" parent="." unique_id=1928778155 instance=ExtResource("6_2gbv4")]
-transform = Transform3D(-0.9659258, 0, -0.25881913, 0, 1, 0, 0.25881913, 0, -0.9659258, -2, 2, -2)
+transform = Transform3D(-1, 0, -8.940697e-08, 0, 1, 0, 8.940697e-08, 0, -1, -2, 2, -2)
+
+[node name="Pressure Valve" parent="." unique_id=1297013897 instance=ExtResource("7_5xt3t")]
+transform = Transform3D(-1, 0, -8.940697e-08, 0, 1, 0, 8.940697e-08, 0, -1, -2, 2, -1)
