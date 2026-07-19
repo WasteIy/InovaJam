@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://bkytqiuqpnd4s"]
+
+[ext_resource type="Script" uid="uid://dcwn7jgq10c6p" path="res://Game/Interact/tv_sinwave.gd" id="1_0hj3a"]
+[ext_resource type="PackedScene" uid="uid://c66l4qdhun30d" path="res://Assets/3D/TV Seno.glb" id="1_tkpvs"]
+[ext_resource type="Shader" uid="uid://dvwfmodckac4h" path="res://Game/Interact/SinWave_shader.gdshader" id="2_l21l1"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_capps"]
+size = Vector3(0.48327637, 1.5852356, 1.5101318)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tkpvs"]
+render_priority = 0
+shader = ExtResource("2_l21l1")
+shader_parameter/backgroundColor = Color(0.14117648, 0.4627451, 0.011764706, 1)
+shader_parameter/green_freq = 38.69
+shader_parameter/green_amp = 0.125
+shader_parameter/sin_emission = 7.0
+shader_parameter/sin_size = 0.01
+shader_parameter/red_freq = 15.53
+shader_parameter/red_amp = 0.24
+shader_parameter/scanline_count = 20.0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_capps"]
+subdivide_width = 20
+subdivide_depth = 20
+
+[node name="TV_sinwave" type="StaticBody3D" unique_id=582461275]
+script = ExtResource("1_0hj3a")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1466714557]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0692749, 0.00090026855, 0.00030517578)
+shape = SubResource("BoxShape3D_capps")
+
+[node name="TV Seno" parent="." unique_id=1428079436 instance=ExtResource("1_tkpvs")]
+
+[node name="Screen" type="MeshInstance3D" parent="." unique_id=1507610901]
+transform = Transform3D(-2.9505186e-08, 0.67499995, 0, 2.9505186e-08, 1.2897126e-15, -0.67499995, -0.67499995, -2.9505186e-08, -2.9505186e-08, 0.096684575, -0.004238963, 0)
+material_override = SubResource("ShaderMaterial_tkpvs")
+mesh = SubResource("PlaneMesh_capps")
