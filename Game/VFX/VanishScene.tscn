@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://pa4pb23mf0aa"]
+
+[ext_resource type="Shader" uid="uid://v6y71ro2xw7i" path="res://Game/VFX/VanishShader.gdshader" id="1_f2ylm"]
+[ext_resource type="PackedScene" uid="uid://3aa28otrrt0y" path="res://Game/Player/player.tscn" id="2_pa8ec"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_doww3"]
+render_priority = 0
+shader = ExtResource("1_f2ylm")
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_capps"]
+size = Vector2(40, 80)
+
+[node name="Node3D" type="Node3D" unique_id=1510116124]
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=2015939923]
+transform = Transform3D(3.075, 0, 0, 0, 3.075, 0, 0, 0, 3.075, 0, 1.170641, 0.6955626)
+material_override = SubResource("ShaderMaterial_doww3")
+texture = SubResource("PlaceholderTexture2D_capps")
+
+[node name="Player" parent="." unique_id=1382366052 instance=ExtResource("2_pa8ec")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.21546847, 0.09261429)
+collision_layer = 1
