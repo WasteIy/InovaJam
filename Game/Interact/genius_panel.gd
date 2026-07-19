@@ -15,6 +15,7 @@ const WRONG = preload("res://Assets/Sounds/genius_wrong.wav")
 @export var press_flash_ticks : int = 10
 @export var error_ticks : int = 42
 @export var error_blink_ticks : int = 7
+@export var unlocked_by : Array[NodePath] = []
 @export var solved_beeps : int = 3
 @export var beep_gap_ticks : int = 8
 @export var beep_pitch : float = 2.4
@@ -80,8 +81,17 @@ func is_active():
 func progress():
 	return float(_round - 1) / float(sequence_length)
 
+func is_unlocked():
+	for path in unlocked_by:
+		var part = get_node_or_null(path)
+		if part == null or not part.is_active():
+			return false
+	return true
+
 func on_button_pressed(button, _agent):
 	if _state == FAILED or _state == SOLVED or _state == ROUND_DONE:
+		return
+	if not is_unlocked():
 		return
 	if _input_index >= _revealed or button != _sequence[_input_index]:
 		_fail()

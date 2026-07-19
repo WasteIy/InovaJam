@@ -463,6 +463,7 @@ transform = Transform3D(7.663037e-08, 0, -1.015, 0, 1.015, 0, 1.015, 0, 7.663037
 
 [node name="Genius Panel" parent="Objectives" unique_id=15540894 instance=ExtResource("13_tp6bg")]
 transform = Transform3D(-0.561, -1.2622572e-15, 8.4708645e-08, 0, 0.561, 8.359551e-09, -8.4708645e-08, 8.359551e-09, -0.561, 2.5999887, 1.7528337, 5.354535)
+unlocked_by = Array[NodePath]([NodePath("../../Keyhole"), NodePath("../../Keyhole2")])
 
 [node name="Lights" type="Node3D" parent="." unique_id=1977051523]
 script = ExtResource("25_yyeuc")
@@ -558,6 +559,7 @@ transform = Transform3D(-0.79174095, 0, 0.53402066, 0, 0.85128504, 0, -0.5370607
 mesh = SubResource("ArrayMesh_if1gg")
 script = ExtResource("15_gk64t")
 required_parts = Array[NodePath]([NodePath("../Keyhole"), NodePath("../Keyhole2")])
+door = NodePath(".")
 
 [node name="Keyhole" parent="." unique_id=603728200 instance=ExtResource("12_tp6bg")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 2.9577527, 1.7491646, 5.2609754)

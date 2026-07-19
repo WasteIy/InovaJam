@@ -35,7 +35,7 @@ func setup():
 func on_press(agent):
 	if holder or socket:
 		return
-	if not is_unlocked():
+	if not is_loose and not is_unlocked():
 		return
 	audio_player.play()
 	holder = agent
