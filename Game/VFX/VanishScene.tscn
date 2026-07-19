@@ -1,22 +1,65 @@
 [gd_scene format=3 uid="uid://pa4pb23mf0aa"]
 
 [ext_resource type="Shader" uid="uid://v6y71ro2xw7i" path="res://Game/VFX/VanishShader.gdshader" id="1_f2ylm"]
-[ext_resource type="PackedScene" uid="uid://3aa28otrrt0y" path="res://Game/Player/player.tscn" id="2_pa8ec"]
+[ext_resource type="Script" uid="uid://ci0t8ofgme8y1" path="res://Game/VFX/Vanish_scene.gd" id="1_pa8ec"]
+
+[sub_resource type="Animation" id="Animation_pa8ec"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node3D/Sprite3D:material_override:shader_parameter/freq")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [20.0]
+}
+
+[sub_resource type="Animation" id="Animation_dspqx"]
+resource_name = "Start"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node3D/Sprite3D:material_override:shader_parameter/freq")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [50.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_341n1"]
+_data = {
+&"RESET": SubResource("Animation_pa8ec"),
+&"Start": SubResource("Animation_dspqx")
+}
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_doww3"]
 render_priority = 0
 shader = ExtResource("1_f2ylm")
+shader_parameter/speed = 1.0
+shader_parameter/freq = 20.0
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_capps"]
 size = Vector2(40, 80)
 
 [node name="Node3D" type="Node3D" unique_id=1510116124]
+script = ExtResource("1_pa8ec")
 
-[node name="Sprite3D" type="Sprite3D" parent="." unique_id=2015939923]
-transform = Transform3D(3.075, 0, 0, 0, 3.075, 0, 0, 0, 3.075, 0, 1.170641, 0.6955626)
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1974094842]
+libraries/ = SubResource("AnimationLibrary_341n1")
+autoplay = &"Start"
+
+[node name="Node3D" type="Node3D" parent="." unique_id=1448644868]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="Node3D" unique_id=2015939923]
+transform = Transform3D(-1.3441252e-07, 0, 3.0749996, 0, 3.0749996, 0, -3.0749996, 0, -1.3441252e-07, 0.8, 1.171, 0)
 material_override = SubResource("ShaderMaterial_doww3")
 texture = SubResource("PlaceholderTexture2D_capps")
-
-[node name="Player" parent="." unique_id=1382366052 instance=ExtResource("2_pa8ec")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.21546847, 0.09261429)
-collision_layer = 1

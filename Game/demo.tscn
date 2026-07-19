@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://c61erbvd24gh8" path="res://Game/Interact/lever.tscn" id="15_eq4jn"]
 [ext_resource type="PackedScene" uid="uid://choedg8oxlur6" path="res://Game/Interact/turn_valve.tscn" id="16_kb8el"]
 [ext_resource type="Script" uid="uid://cdxvqbwayc0kw" path="res://Game/objectives.gd" id="16_m5pt8"]
+[ext_resource type="PackedScene" uid="uid://pa4pb23mf0aa" path="res://Game/VFX/VanishScene.tscn" id="18_tncce"]
 
 [sub_resource type="Environment" id="Env_1"]
 ambient_light_source = 2
@@ -191,3 +192,6 @@ transform = Transform3D(0.052726213, 0, -0.9986091, 0, 1, 0, 0.9986091, 0, 0.052
 
 [node name="Button Big" parent="Objectives" unique_id=1227441756 instance=ExtResource("10_7waye")]
 transform = Transform3D(0.017037096, -0.98296285, 0.18301271, 0.18301274, 0.18301272, 0.9659257, -0.98296297, 0.017037094, 0.18301271, -3.5457218, 1.3126779, -2.6906023)
+
+[node name="Node3D" parent="." unique_id=1510116124 instance=ExtResource("18_tncce")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.30906987, 0.27482712, -2.7387013)

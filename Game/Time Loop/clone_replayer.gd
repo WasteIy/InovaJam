@@ -8,18 +8,30 @@ const MOVE_THRESHOLD = 0.0001
 
 var recorded_frames = []
 
+const VANISH_VFX = preload("uid://pa4pb23mf0aa")
+var vanish_frame : int
+var started_playing_vanish := false
+
 func _ready():
 	animator.callback_mode_process = AnimationMixer.ANIMATION_CALLBACK_MODE_PROCESS_PHYSICS
 	animator.play("idle")
 
 func load_recording(frames):
 	recorded_frames = frames
+	var number_frames := len(recorded_frames)
+	vanish_frame = round(number_frames - 0.2 * Engine.physics_ticks_per_second)
 
 func replay_tick(tick):
 	if tick >= recorded_frames.size():
 		visible = false
 		return
 	var frame = recorded_frames[tick]
+	if tick >= vanish_frame:
+		if !started_playing_vanish:
+			started_playing_vanish = true
+			var vfx : Node3D = VANISH_VFX.instantiate()
+			get_tree().root.add_child(vfx)
+			vfx.global_position = global_position
 	global_position = frame["position"]
 	rotation.y = frame["yaw"]
 	head.rotation.x = frame["pitch"]
