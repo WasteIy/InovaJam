@@ -292,6 +292,9 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hboqa"]
+albedo_color = Color(0, 0, 0, 1)
+
 [sub_resource type="Animation" id="Animation_jgper"]
 resource_name = "idle"
 length = 9.966666
@@ -1539,6 +1542,21 @@ skeleton = NodePath("..")
 mesh = SubResource("ArrayMesh_vp4jl")
 skin = SubResource("Skin_sp3ud")
 skeleton = NodePath("..")
+
+[node name="Pupils" type="BoneAttachment3D" parent="Character/Armature_001/Skeleton3D" unique_id=1357847204]
+transform = Transform3D(0.9939465, -0.030876316, -0.10543717, 0.10737399, 0.069795206, 0.99176556, -0.023263048, -0.99708337, 0.07268797, 0.5890062, -0.507854, -62.955883)
+bone_name = "mixamorig_Head"
+bone_idx = 5
+
+[node name="Left" type="CSGSphere3D" parent="Character/Armature_001/Skeleton3D/Pupils" unique_id=34813539]
+transform = Transform3D(1, 1.071021e-08, -9.685755e-08, -3.1664968e-08, 0.99999934, 1.1175871e-07, 0, 5.9604645e-08, 1.0000007, 1.5746523, 4.07148, 3.961584)
+radius = 0.28407514
+material = SubResource("StandardMaterial3D_hboqa")
+
+[node name="Right" type="CSGSphere3D" parent="Character/Armature_001/Skeleton3D/Pupils" unique_id=639390609]
+transform = Transform3D(1, -4.656613e-10, -8.195639e-08, -3.9115548e-08, 0.9999993, 1.3411045e-07, 0, 7.4505806e-08, 1.0000001, -1.327491, 4.09182, 3.9628825)
+radius = 0.27497005
+material = SubResource("StandardMaterial3D_hboqa")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Character" unique_id=80144403]
 libraries/ = SubResource("AnimationLibrary_tyt28")
