@@ -18,6 +18,7 @@ vec2 uv_curve(vec2 uv)
 
 void vertex() {
 	float distance_to_center = (cos(VERTEX.x/1.2) + cos(VERTEX.z/1.2))/2.0 - 0.7;
+	
 	VERTEX.y += distance_to_center;
 }
 
@@ -25,7 +26,14 @@ void fragment() {
 	float s = sin(uv_curve(UV).y * scanline_count * PI * 2.0 + TIME * 10.0) + 1.0;
 	s = s / 2.0;
 	
-	vec3 texColor = texture(main_tex, UV).rgb;
+	if(UV.x < 0.1 || UV.x > 0.93){
+		if(UV.y < 0.10 || UV.y > 0.90){
+			ALPHA = 0.0;
+		}
+	}
+	vec2 newUV = vec2(1.0 - UV.x, 1.0 - UV.y);
+	
+	vec3 texColor = texture(main_tex, newUV).rgb;
 	ALBEDO = mix(texColor, vec3(0.01), s);
 }
 
