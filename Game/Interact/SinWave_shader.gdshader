@@ -13,6 +13,8 @@ uniform float red_amp = 0.7;
 
 uniform float scanline_count : hint_range(0, 1800) = 20.0;
 
+uniform bool hasSolved = false;
+
 vec2 uv_curve(vec2 uv)
 {
 	uv = (uv - 0.5) * -2.0;
@@ -63,7 +65,11 @@ void fragment() {
 	if(green_difY < sin_size){
 		float dif_percentage = 1.0 - green_difY / sin_size;
 		cos_percentage = cos(dif_percentage * 1.0);
-		finalColor = vec3(0.0, cos_percentage * spike(TIME * 0.5), 0.0);
+		if(hasSolved){
+			finalColor = vec3(0.0, cos_percentage * spike(TIME * 0.5), 0.0);
+		} else {
+			finalColor = vec3(0.0, 0.0, cos_percentage * spike(TIME * 0.5));
+		}
 		hasEmition = true;
 	}
 	
