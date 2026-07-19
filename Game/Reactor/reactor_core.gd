@@ -50,6 +50,8 @@ func _process(delta):
 		_cubes[i].transform = moved
 
 func _target_intensity():
+	if Reactor.is_resolved:
+		return 0.0
 	if Reactor.current_phase == Reactor.Phase.CRITICAL:
 		return critical_intensity
 	if Reactor.current_phase == Reactor.Phase.ACTIVE:
