@@ -71,7 +71,6 @@ func stop_sound():
 func update_sound():
 	var velocity_percentage = min(abs(_angular_velocity), 200.0) / 200.0
 	audio_player.pitch_scale = 0.90 + velocity_percentage * 0.05
-	print(audio_player.pitch_scale)
 	audio_player.volume_db = -30 + (30 * velocity_percentage)
 
 func start_sound():
