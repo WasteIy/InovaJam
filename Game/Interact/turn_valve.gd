@@ -16,8 +16,7 @@ extends Interactable
 
 var is_rotating = false
 var is_playing_sound = false
-const sound_start = preload("uid://cgn47iyaxmkji")
-const sound_loop = preload("uid://cse8nhtr45xwe")
+const sound_loop = preload("uid://5dgu5lcflimo")
 @onready var audio_player: AudioStreamPlayer3D = $AudioPlayer
 
 ## Quanto a roda tá girada agora, em graus
@@ -70,16 +69,13 @@ func stop_sound():
 
 func update_sound():
 	var velocity_percentage = min(abs(_angular_velocity), 200.0) / 200.0
-	audio_player.pitch_scale = 0.90 + velocity_percentage * 0.05
+	audio_player.pitch_scale = 0.90 + velocity_percentage * 0.1
 	audio_player.volume_db = -30 + (30 * velocity_percentage)
 
 func start_sound():
 	if is_playing_sound:
 		return
 	is_playing_sound = true
-	audio_player.stream = sound_start
-	audio_player.play()
-	await audio_player.finished
 	audio_player.stream = sound_loop
 	audio_player.play()
 
