@@ -12,6 +12,8 @@ var body
 var holder
 var socket
 var is_temporal = false
+var is_loose = false
+var run_index = -1
 
 var _spawn_transform
 
@@ -31,13 +33,21 @@ func on_press(agent):
 	if holder or socket:
 		return
 	holder = agent
+	is_loose = false
+	_refresh()
+
+func give_to(agent):
+	holder = agent
+	socket = null
+	is_loose = false
 	_refresh()
 
 func drop():
 	var forward = -holder.global_transform.basis.z
-	global_position = holder.global_position + Vector3.UP * 1.1 + forward * 0.5
-	global_rotation = Vector3(0.0, holder.rotation.y, 0.0)
+	var start = Transform3D(Basis(Vector3.UP, holder.rotation.y), holder.global_position + Vector3.UP * 1.1 + forward * 0.5)
 	holder = null
+	is_loose = true
+	_teleport(start)
 	_refresh()
 	body.linear_velocity = forward * TOSS_SPEED + Vector3.UP * TOSS_LIFT
 	body.angular_velocity = Vector3(TUMBLE, TUMBLE * 0.5, 0.0)
@@ -45,31 +55,36 @@ func drop():
 func insert(into):
 	holder = null
 	socket = into
+	is_loose = false
 	_refresh()
 
 func reset_state():
 	if holder == TimeLoop.player_recorder:
-		if not is_temporal:
-			_refill_pedestal()
-			is_temporal = true
-		return
+		_hand_copy_to_player()
 	if is_temporal:
-		queue_free()
 		return
 	holder = null
 	socket = null
+	is_loose = false
+	_teleport(_spawn_transform)
 	_refresh()
-	global_transform = _spawn_transform
-	body.linear_velocity = Vector3.ZERO
-	body.angular_velocity = Vector3.ZERO
 
-func _refill_pedestal():
-	var fresh = duplicate()
-	fresh.transform = _spawn_transform
-	get_parent().add_child(fresh)
+func _teleport(target):
+	global_transform = target
+	PhysicsServer3D.body_set_state(get_rid(), PhysicsServer3D.BODY_STATE_TRANSFORM, target)
+	PhysicsServer3D.body_set_state(get_rid(), PhysicsServer3D.BODY_STATE_LINEAR_VELOCITY, Vector3.ZERO)
+	PhysicsServer3D.body_set_state(get_rid(), PhysicsServer3D.BODY_STATE_ANGULAR_VELOCITY, Vector3.ZERO)
+
+func _hand_copy_to_player():
+	var copy = duplicate()
+	get_parent().add_child(copy)
+	copy.is_temporal = true
+	copy.run_index = TimeLoop.past_recordings.size()
+	copy.holder = TimeLoop.player_recorder
+	copy._refresh()
 
 func _refresh():
 	var carried = holder != null or socket != null
 	visible = socket != null or holder == null
-	body.freeze = carried
+	body.freeze = carried or not is_loose
 	collision.set_deferred("disabled", carried)

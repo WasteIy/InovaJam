@@ -43,6 +43,9 @@ func rewind_loop():
 		clone_container.add_child(clone)
 		clone.load_recording(frames)
 		active_clones.append(clone)
+	for key in get_tree().get_nodes_in_group("keys"):
+		if key.is_temporal and key.run_index >= 0 and key.run_index < active_clones.size():
+			key.give_to(active_clones[key.run_index])
 	player_recorder.reset_to_spawn()
 	current_tick = 0
 
