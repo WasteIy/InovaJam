@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://cwogqu47aai6t"
-path="res://.godot/imported/BotaoUnpress.wav-ca7e771c6f03d83d5dbaa48c9ddd33f2.sample"
+path="res://.godot/imported/button_release.wav-5521e4fa05f4ad0556c1316ecfc2b8a7.sample"
 
 [deps]
 
-source_file="res://Assets/Sounds/BotaoUnpress.wav"
-dest_files=["res://.godot/imported/BotaoUnpress.wav-ca7e771c6f03d83d5dbaa48c9ddd33f2.sample"]
+source_file="res://Assets/Sounds/button_release.wav"
+dest_files=["res://.godot/imported/button_release.wav-5521e4fa05f4ad0556c1316ecfc2b8a7.sample"]
 
 [params]
 

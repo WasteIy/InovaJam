@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://cm2ej44wr1fqs"
-path="res://.godot/imported/Rope.wav-90ca691582d90fc62c55d133b34373e4.sample"
+uid="uid://s1wi5luwp7d1"
+path="res://.godot/imported/key_pickup.wav-4f7802cf22fb9185fce66bf0f1ef7bff.sample"
 
 [deps]
 
-source_file="res://Assets/Sounds/Rope.wav"
-dest_files=["res://.godot/imported/Rope.wav-90ca691582d90fc62c55d133b34373e4.sample"]
+source_file="res://Assets/Sounds/key_pickup.wav"
+dest_files=["res://.godot/imported/key_pickup.wav-4f7802cf22fb9185fce66bf0f1ef7bff.sample"]
 
 [params]
 

@@ -100,3 +100,7 @@ mesh = SubResource("ArrayMesh_ucrgp")
 [node name="Collision" type="CollisionShape3D" parent="." unique_id=1943123433]
 transform = Transform3D(2, 0, 0, 0, -8.742278e-08, -2, 0, 2, -8.742278e-08, 0, 2.719462e-07, 0.03221018)
 shape = SubResource("CylinderShape3D_3qc6h")
+
+[node name="AudioPlayer" type="AudioStreamPlayer3D" parent="." unique_id=1770034411]
+unit_size = 1.0
+max_distance = 30.0

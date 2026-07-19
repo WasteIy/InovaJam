@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://br8s8got1vrii"
-path="res://.godot/imported/Enferrujado3.wav-b04a0961fc2e4ba154f002578cc298b4.sample"
+path="res://.godot/imported/rusty_3.wav-655b65834c46d3878842bb05ce4cf184.sample"
 
 [deps]
 
-source_file="res://Assets/Sounds/Enferrujado3.wav"
-dest_files=["res://.godot/imported/Enferrujado3.wav-b04a0961fc2e4ba154f002578cc298b4.sample"]
+source_file="res://Assets/Sounds/rusty_3.wav"
+dest_files=["res://.godot/imported/rusty_3.wav-655b65834c46d3878842bb05ce4cf184.sample"]
 
 [params]
 

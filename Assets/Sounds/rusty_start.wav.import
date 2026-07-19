@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://cgn47iyaxmkji"
-path="res://.godot/imported/enferrujado_comeco.wav-076387b08bafe30733a21a49b27957e3.sample"
+path="res://.godot/imported/rusty_start.wav-b243b03c9b2331030bf1ba0c2c03ce92.sample"
 
 [deps]
 
-source_file="res://Assets/Sounds/enferrujado_comeco.wav"
-dest_files=["res://.godot/imported/enferrujado_comeco.wav-076387b08bafe30733a21a49b27957e3.sample"]
+source_file="res://Assets/Sounds/rusty_start.wav"
+dest_files=["res://.godot/imported/rusty_start.wav-b243b03c9b2331030bf1ba0c2c03ce92.sample"]
 
 [params]
 

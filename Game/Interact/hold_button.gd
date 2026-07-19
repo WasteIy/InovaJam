@@ -1,9 +1,13 @@
 extends Interactable
 
+const PRESS_SOUND = preload("res://Assets/Sounds/button_press.wav")
+const RELEASE_SOUND = preload("res://Assets/Sounds/button_release.wav")
+
 @export var press_depth : float = 0.02
 @export var press_speed : float = 22.0
 
 @onready var cap = $Cap
+@onready var audio_player = $AudioPlayer
 
 ## Verdadeiro sempre que pelo menos um clone tá segurando isso
 var is_pressed = false
@@ -14,7 +18,11 @@ func setup():
 	_rest_z = cap.position.z
 
 func on_hold(holder_count):
-	is_pressed = holder_count > 0
+	var pressed = holder_count > 0
+	if pressed != is_pressed:
+		audio_player.stream = PRESS_SOUND if pressed else RELEASE_SOUND
+		audio_player.play()
+	is_pressed = pressed
 
 func is_active():
 	return is_pressed

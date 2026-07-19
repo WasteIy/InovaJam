@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://g1jugu4t02yp"
-path="res://.godot/imported/GeniusSound.wav-28e3c9767eeb7760be19ccee3e5393a0.sample"
+path="res://.godot/imported/genius_sound.wav-53c9adc2613cb1b56f3db45200475815.sample"
 
 [deps]
 
-source_file="res://Assets/Sounds/GeniusSound.wav"
-dest_files=["res://.godot/imported/GeniusSound.wav-28e3c9767eeb7760be19ccee3e5393a0.sample"]
+source_file="res://Assets/Sounds/genius_sound.wav"
+dest_files=["res://.godot/imported/genius_sound.wav-53c9adc2613cb1b56f3db45200475815.sample"]
 
 [params]
 

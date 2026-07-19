@@ -16,7 +16,7 @@ extends Interactable
 
 var is_rotating = false
 var is_playing_sound = false
-const sound_loop = preload("res://Assets/Sounds/Enferrujado3.wav")
+const sound_loop = preload("res://Assets/Sounds/rusty_3.wav")
 @onready var audio_player: AudioStreamPlayer3D = $AudioPlayer
 
 ## Quanto a roda tá girada agora, em graus

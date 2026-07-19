@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://cse8nhtr45xwe"
-path="res://.godot/imported/enferrujado_meio.wav-e9e10165fdace7f71727cca80f5196b8.sample"
+path="res://.godot/imported/rusty_middle.wav-a79bd65a206dad217979313b69dd954a.sample"
 
 [deps]
 
-source_file="res://Assets/Sounds/enferrujado_meio.wav"
-dest_files=["res://.godot/imported/enferrujado_meio.wav-e9e10165fdace7f71727cca80f5196b8.sample"]
+source_file="res://Assets/Sounds/rusty_middle.wav"
+dest_files=["res://.godot/imported/rusty_middle.wav-a79bd65a206dad217979313b69dd954a.sample"]
 
 [params]
 

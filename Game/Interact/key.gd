@@ -5,7 +5,10 @@ const TOSS_SPEED = 2.0
 const TOSS_LIFT = 1.5
 const TUMBLE = 2.5
 
+@export var unlocked_by : Array[NodePath] = []
+
 @onready var collision = $Collision
+@onready var audio_player = $AudioPlayer
 
 var body
 
@@ -32,9 +35,19 @@ func setup():
 func on_press(agent):
 	if holder or socket:
 		return
+	if not is_unlocked():
+		return
+	audio_player.play()
 	holder = agent
 	is_loose = false
 	_refresh()
+
+func is_unlocked():
+	for path in unlocked_by:
+		var part = get_node_or_null(path)
+		if part == null or not part.is_active():
+			return false
+	return true
 
 func give_to(agent):
 	holder = agent

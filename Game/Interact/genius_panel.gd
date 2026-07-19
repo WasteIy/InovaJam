@@ -4,6 +4,9 @@ enum { SHOWING, LISTENING, ROUND_DONE, FAILED, SOLVED }
 
 const VOICES = 4
 
+const TONE = preload("res://Assets/Sounds/genius_sound.wav")
+const WRONG = preload("res://Assets/Sounds/genius_wrong.wav")
+
 @export var sequence_length : int = 4
 @export var flash_ticks : int = 26
 @export var gap_ticks : int = 14
@@ -12,6 +15,9 @@ const VOICES = 4
 @export var press_flash_ticks : int = 10
 @export var error_ticks : int = 42
 @export var error_blink_ticks : int = 7
+@export var solved_beeps : int = 3
+@export var beep_gap_ticks : int = 8
+@export var beep_pitch : float = 2.4
 
 var _buttons = []
 var _sequence = []
@@ -23,6 +29,8 @@ var _phase_tick = 0
 var _lit_button
 var _flash_ticks_left = 0
 var _blinking_error = false
+var _beeps_left = 0
+var _beep_tick = 0
 
 @onready var audio_player = $AudioPlayer
 
@@ -43,10 +51,27 @@ func _ready():
 		_voices.append(voice)
 	TimeLoop.loop_reset.connect(_on_loop_reset)
 
-func _play_tone(index):
+func _next_free_voice():
 	var voice = _voices[_next_voice]
 	_next_voice = (_next_voice + 1) % _voices.size()
+	return voice
+
+func _play_tone(index):
+	var voice = _next_free_voice()
+	voice.stream = TONE
 	voice.pitch_scale = 0.8 + 0.1 * index
+	voice.play()
+
+func _play_beep():
+	var voice = _next_free_voice()
+	voice.stream = TONE
+	voice.pitch_scale = beep_pitch
+	voice.play()
+
+func _play_wrong():
+	var voice = _next_free_voice()
+	voice.stream = WRONG
+	voice.pitch_scale = 1.0
 	voice.play()
 
 func is_active():
@@ -73,6 +98,8 @@ func on_button_pressed(button, _agent):
 	if _round > sequence_length:
 		_state = SOLVED
 		_set_all_solved(true)
+		_beeps_left = solved_beeps
+		_beep_tick = 0
 		return
 	_input_index = 0
 	_state = ROUND_DONE
@@ -80,6 +107,12 @@ func on_button_pressed(button, _agent):
 
 func _physics_process(_delta):
 	_phase_tick += 1
+	if _beeps_left > 0:
+		_beep_tick -= 1
+		if _beep_tick <= 0:
+			_play_beep()
+			_beeps_left -= 1
+			_beep_tick = beep_gap_ticks
 	match _state:
 		SHOWING:
 			_update_showing()
@@ -124,6 +157,7 @@ func _fail():
 	_state = FAILED
 	_phase_tick = 0
 	_set_all_error(true)
+	_play_wrong()
 
 func _update_round_done():
 	if _phase_tick >= press_flash_ticks:
@@ -166,6 +200,7 @@ func _set_all_solved(solved):
 		button.set_solved(solved)
 
 func _on_loop_reset():
+	_beeps_left = 0
 	_lit_button = null
 	_blinking_error = false
 	_round = 1

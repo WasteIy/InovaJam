@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://becvagqywfyoc" path="res://Game/Interact/pressure_valve.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://dh7tqvjra3mgn" path="res://Assets/Textures/valve_background.png" id="2_iaaa6"]
-[ext_resource type="AudioStream" uid="uid://ctwian0af8mhh" path="res://Assets/Sounds/BotaoPress.wav" id="2_r7rhp"]
+[ext_resource type="AudioStream" uid="uid://ctwian0af8mhh" path="res://Assets/Sounds/button_press.wav" id="2_r7rhp"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_reyrr"]
 resource_name = "M_lamp"

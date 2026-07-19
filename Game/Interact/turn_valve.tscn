@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://choedg8oxlur6"]
 
 [ext_resource type="Script" uid="uid://b4o4r30odmgmt" path="res://Game/Interact/turn_valve.gd" id="1"]
-[ext_resource type="AudioStream" uid="uid://cse8nhtr45xwe" path="res://Assets/Sounds/enferrujado_meio.wav" id="2_py6jq"]
+[ext_resource type="AudioStream" uid="uid://cse8nhtr45xwe" path="res://Assets/Sounds/rusty_middle.wav" id="2_py6jq"]
 
 [sub_resource type="BoxShape3D" id="FaceShape"]
 size = Vector3(1.3, 1.3, 0.4)

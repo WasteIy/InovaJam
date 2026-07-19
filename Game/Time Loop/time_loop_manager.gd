@@ -1,5 +1,11 @@
 extends Node
 
+const WARP_SOUND = preload("res://Assets/Sounds/time_warp.wav")
+const BOOM_SOUND = preload("res://Assets/Sounds/explosion_distant.wav")
+
+@export var explosion_lead_seconds : float = 1.0
+@export var explosion_volume_db : float = 4.0
+
 ## Dispara logo antes de um loop novo começar, pros puzzles se limparem
 signal loop_reset
 signal five_sec_reset
@@ -23,6 +29,19 @@ var past_recordings = []
 ## Clones refazendo as runs antigas agora
 var active_clones = []
 
+var _warp_player
+var _boom_player
+var _exploded = false
+
+func _ready():
+	_warp_player = AudioStreamPlayer.new()
+	_warp_player.stream = WARP_SOUND
+	add_child(_warp_player)
+	_boom_player = AudioStreamPlayer.new()
+	_boom_player.stream = BOOM_SOUND
+	_boom_player.volume_db = explosion_volume_db
+	add_child(_boom_player)
+
 func setup_clones(container, scene):
 	clone_container = container
 	clone_scene = scene
@@ -32,12 +51,16 @@ func start_run():
 	_despawn_clones()
 	current_tick = 0
 	is_running = true
+	_exploded = false
 	player_recorder.reset_to_spawn()
 
 func rewind_loop():
 	if not is_running:
 		return
+	_silence_all(get_tree().root)
+	_warp_player.play()
 	emitted_five_sec = false
+	_exploded = false
 	past_recordings.append(player_recorder.recorded_frames)
 	loop_reset.emit()
 	_despawn_clones()
@@ -63,8 +86,18 @@ func _physics_process(_delta):
 		if not emitted_five_sec: 
 			five_sec_reset.emit()
 			emitted_five_sec = true
+	if current_tick >= (loop_duration_seconds - explosion_lead_seconds) * Engine.physics_ticks_per_second:
+		if not _exploded:
+			_exploded = true
+			_boom_player.play()
 	if current_tick >= loop_duration_seconds * Engine.physics_ticks_per_second:
 		rewind_loop()
+
+func _silence_all(node):
+	for child in node.get_children():
+		if child is AudioStreamPlayer or child is AudioStreamPlayer2D or child is AudioStreamPlayer3D:
+			child.stop()
+		_silence_all(child)
 
 func _despawn_clones():
 	for clone in active_clones:
