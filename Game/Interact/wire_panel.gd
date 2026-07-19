@@ -1,6 +1,9 @@
 extends Node3D
 
 @export var wire_thickness : float = 0.05
+@onready var audio_player: AudioStreamPlayer3D = $AudioPlayer
+const WIRE_CONNECT = preload("uid://dwfj3fn4e0req")
+const ROPE = preload("uid://c0jffjhkpknqc")
 
 var _source_terminals = []
 var _held_source = {}
@@ -31,12 +34,16 @@ func on_terminal_pressed(terminal, agent):
 		return
 	if terminal.is_source:
 		_hold_source(agent, terminal)
+		audio_player.stream = ROPE
+		audio_player.play()
 		return
 	if not _held_source.has(agent):
 		return
 	var source = _held_source[agent]
 	if source.wire_id == terminal.wire_id:
 		_join_wire(source, terminal)
+		audio_player.stream = WIRE_CONNECT
+		audio_player.play()
 	_hold_source(agent, null)
 
 func _scramble_wiring(target_terminals):
