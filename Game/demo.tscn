@@ -13,6 +13,8 @@
 [ext_resource type="PackedScene" uid="uid://dkpqiv66vl6c0" path="res://Game/core.tscn" id="12_wfyme"]
 [ext_resource type="PackedScene" uid="uid://csirkkbtfv7f1" path="res://Game/Interact/genius_panel.tscn" id="13_tp6bg"]
 [ext_resource type="Script" uid="uid://cpd4tj3jonrs0" path="res://Game/Reactor/phase_shake.gd" id="14"]
+[ext_resource type="PackedScene" uid="uid://bcambydbswwvo" path="res://Game/VFX_timeloop.tscn" id="14_hyqfh"]
+[ext_resource type="Script" uid="uid://jr5p2dj3ll3r" path="res://Game/vfx_timeloop.gd" id="15_eq4jn"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_y8s75"]
 viewport_path = NodePath("TvScreen/SubViewport")
@@ -161,3 +163,6 @@ transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 3.55
 
 [node name="Genius Panel" parent="." unique_id=15540894 instance=ExtResource("13_tp6bg")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 2.4697561, 2, 5.139569)
+
+[node name="VFX_timeloop" parent="." unique_id=963533723 instance=ExtResource("14_hyqfh")]
+script = ExtResource("15_eq4jn")

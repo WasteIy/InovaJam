@@ -2,6 +2,8 @@ extends Node
 
 ## Dispara logo antes de um loop novo começar, pros puzzles se limparem
 signal loop_reset
+signal five_sec_reset
+var emitted_five_sec = false
 
 ## Quanto tempo você tem antes do loop voltar sozinho
 @export var loop_duration_seconds : float = 30.0
@@ -35,6 +37,7 @@ func start_run():
 func rewind_loop():
 	if not is_running:
 		return
+	emitted_five_sec = false
 	past_recordings.append(player_recorder.recorded_frames)
 	loop_reset.emit()
 	_despawn_clones()
@@ -56,6 +59,10 @@ func _physics_process(_delta):
 	for clone in active_clones:
 		clone.replay_tick(current_tick)
 	current_tick += 1
+	if current_tick >= (loop_duration_seconds - 5) * Engine.physics_ticks_per_second:
+		if not emitted_five_sec: 
+			five_sec_reset.emit()
+			emitted_five_sec = true
 	if current_tick >= loop_duration_seconds * Engine.physics_ticks_per_second:
 		rewind_loop()
 
