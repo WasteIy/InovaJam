@@ -34,6 +34,7 @@ var _spawn_yaw
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	interact_ray.add_exception(self)
 	TimeLoop.player_recorder = self
 	_spawn_position = global_position
 	_spawn_yaw = rotation.y
