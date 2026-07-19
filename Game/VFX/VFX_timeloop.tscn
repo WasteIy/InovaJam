@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://bcambydbswwvo"]
 
-[ext_resource type="Shader" uid="uid://b7qv47nasepc8" path="res://Game/VFX_timeloop.gdshader" id="1_dg2c4"]
-[ext_resource type="Script" uid="uid://jr5p2dj3ll3r" path="res://Game/vfx_timeloop.gd" id="1_emv2h"]
-[ext_resource type="Shader" uid="uid://5lwt70w6rv13" path="res://Game/Shockwave_Timeloop.gdshader" id="2_2enrt"]
+[ext_resource type="Script" uid="uid://jr5p2dj3ll3r" path="res://Game/VFX/vfx_timeloop.gd" id="1_p5dyd"]
+[ext_resource type="Shader" uid="uid://b7qv47nasepc8" path="res://Game/VFX/VFX_timeloop.gdshader" id="2_qin7f"]
+[ext_resource type="Shader" uid="uid://5lwt70w6rv13" path="res://Game/VFX/Shockwave_Timeloop.gdshader" id="3_bgyux"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dg2c4"]
-shader = ExtResource("1_dg2c4")
+shader = ExtResource("2_qin7f")
 shader_parameter/screen_width = 1920.0
 shader_parameter/screen_height = 1080.0
 shader_parameter/circle_size = 1.0
@@ -15,7 +15,7 @@ shader_parameter/fallout = 0.1
 bg_color = Color(1, 1, 1, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_capps"]
-shader = ExtResource("2_2enrt")
+shader = ExtResource("3_bgyux")
 shader_parameter/strength = 0.08
 shader_parameter/center = Vector2(0.5, 0.5)
 shader_parameter/radius = 0.0
@@ -199,7 +199,7 @@ _data = {
 }
 
 [node name="VFX_timeloop" type="CanvasLayer" unique_id=963533723]
-script = ExtResource("1_emv2h")
+script = ExtResource("1_p5dyd")
 
 [node name="BorderEffect" type="Panel" parent="." unique_id=147090732]
 visible = false
