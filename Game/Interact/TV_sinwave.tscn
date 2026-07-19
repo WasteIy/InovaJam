@@ -17,6 +17,7 @@ shader_parameter/sin_emission = 7.0
 shader_parameter/sin_size = 0.01
 shader_parameter/red_freq = 15.53
 shader_parameter/red_amp = 0.24
+shader_parameter/scanline_count = 20.0
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_capps"]
 subdivide_width = 20
