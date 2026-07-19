@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cafuo1uce5cnq" path="res://Game/Interact/wire_panel.gd" id="1"]
 [ext_resource type="Script" uid="uid://dml1udp4vyhgv" path="res://Game/Interact/wire_terminal.gd" id="2"]
-[ext_resource type="AudioStream" uid="uid://c0jffjhkpknqc" path="res://Assets/Sounds/Rope.mp3" id="3_hlfck"]
+[ext_resource type="AudioStream" path="res://Assets/Sounds/Rope.wav" id="3_hlfck"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_chy5v"]
 resource_name = "M_metal"
@@ -351,3 +351,5 @@ shape = SubResource("TerminalShape")
 
 [node name="AudioPlayer" type="AudioStreamPlayer3D" parent="." unique_id=1414644505]
 stream = ExtResource("3_hlfck")
+unit_size = 1.0
+max_distance = 30.0

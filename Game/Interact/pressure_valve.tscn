@@ -191,3 +191,5 @@ mesh = SubResource("CapsuleMesh_vkte0")
 
 [node name="AudioPlayer" type="AudioStreamPlayer3D" parent="." unique_id=1390682543]
 stream = ExtResource("2_r7rhp")
+unit_size = 1.0
+max_distance = 30.0

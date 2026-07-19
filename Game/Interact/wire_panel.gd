@@ -2,10 +2,9 @@ extends Node3D
 
 @export var wire_thickness : float = 0.012
 @onready var audio_player = $AudioPlayer
-const WIRE_CONNECT = preload("uid://dwfj3fn4e0req")
-const ROPE = preload("uid://c0jffjhkpknqc")
+const WIRE_CONNECT = preload("res://Assets/Sounds/WireConnect.wav")
+const ROPE = preload("res://Assets/Sounds/Rope.wav")
 
-const ROPE_START = 1.1
 
 var _source_terminals = []
 var _held_source = {}
@@ -37,7 +36,7 @@ func on_terminal_pressed(terminal, agent):
 	if terminal.is_source:
 		_hold_source(agent, terminal)
 		audio_player.stream = ROPE
-		audio_player.play(ROPE_START)
+		audio_player.play()
 		return
 	if not _held_source.has(agent):
 		return

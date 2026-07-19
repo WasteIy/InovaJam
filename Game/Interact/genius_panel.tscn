@@ -98,3 +98,5 @@ shape = SubResource("ButtonShape")
 [node name="AudioPlayer" type="AudioStreamPlayer3D" parent="." unique_id=1832444166]
 transform = Transform3D(0.75, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 stream = ExtResource("3_c0gcm")
+unit_size = 1.0
+max_distance = 30.0
