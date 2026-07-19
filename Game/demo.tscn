@@ -18,7 +18,9 @@ resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("2_5xt3t")
 shader_parameter/main_tex = SubResource("ViewportTexture_y8s75")
-shader_parameter/scanline_count = 20.0
+shader_parameter/scanline_count = 15.0
+shader_parameter/scanline_strength = 0.5
+shader_parameter/scanline_warp = 0.002
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_3pc0w"]
 subdivide_width = 16

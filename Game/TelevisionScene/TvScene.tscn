@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dvf6kpxsqwanp"]
 
-[ext_resource type="FontFile" uid="uid://duflioi70yh1p" path="res://Assets/Fonts/Seven Segment.ttf" id="1_t4o6k"]
+[ext_resource type="FontFile" path="res://Assets/Fonts/Seven Segment Mono.ttf" id="1_t4o6k"]
 [ext_resource type="Script" uid="uid://ba5t08f0lo3xk" path="res://Game/TelevisionScene/TimerForTV.gd" id="2_t73v3"]
 
 [sub_resource type="Animation" id="Animation_wekvm"]
@@ -15,12 +15,12 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [120]
+"values": [30.0]
 }
 
 [sub_resource type="Animation" id="Animation_t73v3"]
 resource_name = "TvAnimation"
-length = 120.0
+length = 30.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -28,10 +28,10 @@ tracks/0/path = NodePath("Label:time_value")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 120),
+"times": PackedFloat32Array(0, 30),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [120, 0]
+"values": [30.0, 0.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wekvm"]
@@ -43,6 +43,7 @@ _data = {
 [node name="SubViewport" type="SubViewport" unique_id=989924232]
 disable_3d = true
 handle_input_locally = false
+size = Vector2i(192, 192)
 render_target_update_mode = 4
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=351358878]
@@ -68,11 +69,11 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.8, 0.11999998, 0.11999998, 1)
 theme_override_fonts/font = ExtResource("1_t4o6k")
-theme_override_font_sizes/font_size = 210
-text = "02:00"
+theme_override_font_sizes/font_size = 68
+text = "30.00"
 vertical_alignment = 1
 script = ExtResource("2_t73v3")
-time_value = 120
+time_value = 30
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer" unique_id=1935811305]
 libraries/ = SubResource("AnimationLibrary_wekvm")

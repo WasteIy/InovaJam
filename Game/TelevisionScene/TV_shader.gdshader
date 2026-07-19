@@ -1,9 +1,11 @@
 shader_type spatial;
 render_mode unshaded;
 
-uniform sampler2D main_tex : source_color, filter_linear;
+uniform sampler2D main_tex : source_color, filter_nearest, repeat_disable;
 
-uniform float scanline_count : hint_range(0, 1800) = 20.0;
+uniform float scanline_count : hint_range(0, 1800) = 15.0;
+uniform float scanline_strength : hint_range(0, 1) = 0.5;
+uniform float scanline_warp : hint_range(0, 0.05) = 0.002;
 
 vec2 uv_curve(vec2 uv)
 {
@@ -23,16 +25,18 @@ void vertex() {
 }
 
 void fragment() {
-	float s = sin(uv_curve(UV).y * scanline_count * PI * 2.0 + TIME * 10.0) + 1.0;
-	s = s / 2.0;
-	
+	float wave = sin(uv_curve(UV).y * scanline_count * PI * 2.0 + TIME * 10.0);
+	float s = (wave + 1.0) / 2.0 * scanline_strength;
+
 	if(UV.x < 0.1 || UV.x > 0.93){
 		if(UV.y < 0.10 || UV.y > 0.90){
 			ALPHA = 0.0;
 		}
 	}
 	vec2 newUV = vec2(1.0 - UV.x, 1.0 - UV.y);
-	
+
+	newUV.x += wave * scanline_warp;
+
 	vec3 texColor = texture(main_tex, newUV).rgb;
 	ALBEDO = mix(texColor, vec3(0.01), s);
 }
