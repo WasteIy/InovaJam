@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c61erbvd24gh8"]
 
 [ext_resource type="Script" uid="uid://bc27mja1v84kc" path="res://Game/Interact/lever.gd" id="1"]
-[ext_resource type="AudioStream" uid="uid://b4bs0midfr1fq" path="res://Assets/Sounds/LeverSound.mp3" id="2_ghyjp"]
+[ext_resource type="AudioStream" uid="uid://ctwian0af8mhh" path="res://Assets/Sounds/BotaoPress.wav" id="2_ghyjp"]
 
 [sub_resource type="BoxShape3D" id="GrabShape"]
 size = Vector3(0.7, 1.5, 0.5)

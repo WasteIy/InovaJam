@@ -10,6 +10,7 @@ const OFF_COLOR = Color(0.12, 0.12, 0.14)
 
 @onready var needle = $Needle
 @onready var lights = $Lights.get_children()
+@onready var audio_player: AudioStreamPlayer3D = $AudioPlayer
 
 ## Verdadeiro depois que você acertou o bastante, aí o ponteiro para no centro
 var is_stabilized = false
@@ -30,6 +31,7 @@ func on_press(_agent):
 	if is_stabilized or absf(_needle_offset()) > GREEN_ZONE:
 		return
 	_good_hits += 1
+	audio_player.play()
 	if _good_hits >= HITS_TO_STABILIZE:
 		is_stabilized = true
 	_refresh_lights()
