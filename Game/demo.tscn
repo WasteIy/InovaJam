@@ -24,7 +24,7 @@
 [ext_resource type="Script" uid="uid://miwfi0jrheht" path="res://Game/Reactor/rotating_beacon.gd" id="beacon"]
 [ext_resource type="Script" uid="uid://covd44mo6mb5l" path="res://Game/TelevisionScene/clock_tick.gd" id="ticksfx"]
 [ext_resource type="AudioStream" uid="uid://dkq5776r4wrmj" path="res://Assets/Sounds/clock_tick.wav" id="tickwav"]
-[ext_resource type="Script" path="res://Game/Reactor/warning_lamp.gd" id="warnlamp"]
+[ext_resource type="Script" uid="uid://cc4b67p7c7o0b" path="res://Game/Reactor/warning_lamp.gd" id="warnlamp"]
 
 [sub_resource type="Gradient" id="Grade_1"]
 offsets = PackedFloat32Array(0, 0.45, 1)
@@ -547,11 +547,11 @@ mesh = SubResource("CapsuleMesh_8qv0a")
 [node name="Pressure Valve" parent="." unique_id=1297013897 instance=ExtResource("7_5xt3t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5302695, 1.9, 5.25702)
 
-[node name="Pressure Valve2" parent="." unique_id=2102536051 instance=ExtResource("7_5xt3t")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.81020194, 1.9, 5.25702)
-
 [node name="Pressure Valve3" parent="." unique_id=1488765492 instance=ExtResource("7_5xt3t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0967898, 1.9, 5.25702)
+
+[node name="Pressure Valve2" parent="Pressure Valve3" unique_id=2102536051 instance=ExtResource("7_5xt3t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2865879, 0, 0)
 
 [node name="Genius Pannel" type="MeshInstance3D" parent="." unique_id=1327541303]
 transform = Transform3D(-0.79174095, 0, 0.53402066, 0, 0.85128504, 0, -0.53706074, 0, -0.7872592, 2.820408, 1.5518303, 5.259095)

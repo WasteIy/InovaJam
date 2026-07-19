@@ -4,7 +4,7 @@
 [ext_resource type="Shader" uid="uid://dvwfmodckac4h" path="res://Game/Interact/SinWave_shader.gdshader" id="2_l21l1"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_capps"]
-size = Vector3(0.48327637, 1.5852356, 1.5101318)
+size = Vector3(31.968, 25.89, 27.325)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tkpvs"]
 render_priority = 0
