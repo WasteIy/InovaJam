@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" path="res://Game/Interact/genius_panel.tscn" id="10"]
 [ext_resource type="PackedScene" uid="uid://cjbrtq2ytqmap" path="res://Game/Interact/key.tscn" id="11"]
 [ext_resource type="PackedScene" path="res://Game/Interact/keyhole.tscn" id="12"]
+[ext_resource type="PackedScene" uid="uid://dkpqiv66vl6c0" path="res://Game/core.tscn" id="12_wfyme"]
 
 [sub_resource type="Environment" id="Env_1"]
 ambient_light_source = 2
@@ -155,3 +156,6 @@ door = NodePath("../Key Door")
 [node name="Key Door" type="MeshInstance3D" parent="." unique_id=903317967]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.75, 2.5, -7.5)
 mesh = SubResource("BoxMesh_2gbv4")
+
+[node name="Core" parent="." unique_id=1796245259 instance=ExtResource("12_wfyme")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9, -39)
