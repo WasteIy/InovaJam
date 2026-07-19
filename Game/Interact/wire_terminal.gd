@@ -16,6 +16,8 @@ const SELECTED_ENERGY = 0.7
 
 @export var wire_id : int = 0 : set = _set_wire_id
 @export var is_source : bool = true
+## Pedaço de fio do asset que acende junto com esse terminal
+@export var wire_mesh : NodePath
 
 var is_wired = false
 var is_selected = false
@@ -26,9 +28,12 @@ func wire_color():
 	return WIRE_COLORS[wire_id % WIRE_COLORS.size()]
 
 func setup():
+	var visual = get_node_or_null(wire_mesh)
+	if visual == null:
+		return
 	_material = StandardMaterial3D.new()
 	_material.emission_enabled = true
-	$Mesh.material_override = _material
+	visual.material_override = _material
 	_refresh_glow()
 
 func on_press(agent):

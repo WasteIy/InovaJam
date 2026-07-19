@@ -1,6 +1,6 @@
 extends Node3D
 
-@export var wire_thickness : float = 0.05
+@export var wire_thickness : float = 0.012
 
 var _source_terminals = []
 var _held_source = {}

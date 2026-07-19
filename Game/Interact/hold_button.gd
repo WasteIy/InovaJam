@@ -1,34 +1,29 @@
 extends Interactable
 
-@export var pressed_color : Color = Color(0.2, 1, 0.3)
-@export var idle_color : Color = Color(0.8, 0.2, 0.2)
+@export var press_depth : float = 0.02
+@export var press_speed : float = 22.0
 
-@onready var mesh = $Mesh
+@onready var cap = $Cap
 
 ## Verdadeiro sempre que pelo menos um clone tá segurando isso
 var is_pressed = false
 
-var _material
+var _rest_z = 0.0
 
 func setup():
-	_material = StandardMaterial3D.new()
-	mesh.material_override = _material
-	_refresh_color(false)
+	_rest_z = cap.position.z
 
 func on_hold(holder_count):
-	var held_now = holder_count > 0
-	if held_now != is_pressed:
-		is_pressed = held_now
-		_refresh_color(held_now)
+	is_pressed = holder_count > 0
 
 func is_active():
 	return is_pressed
 
 func reset_state():
 	is_pressed = false
-	_refresh_color(false)
 
-func _refresh_color(lit):
-	_material.albedo_color = pressed_color if lit else idle_color
-	_material.emission_enabled = lit
-	_material.emission = pressed_color
+func _process(delta):
+	var target = _rest_z
+	if is_pressed:
+		target -= press_depth
+	cap.position.z = lerpf(cap.position.z, target, clampf(delta * press_speed, 0.0, 1.0))
