@@ -18,6 +18,7 @@ var _drag = Vector2.ZERO
 var _is_grabbing = false
 ## Movimento de mouse acumulado desde o último tick de física
 var _mouse_motion = Vector2.ZERO
+var _dropped = false
 ## Onde a gente começou, pra todo rewind largar no mesmo lugar
 var _spawn_position
 var _spawn_yaw
@@ -35,6 +36,7 @@ func capture_frame():
 		"pitch": head.rotation.x,
 		"target_path": _target_path,
 		"drag": _drag,
+		"dropped": _dropped,
 	})
 
 func reset_to_spawn():
@@ -61,6 +63,13 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y -= 9.8 * delta
 	move_and_slide()
+
+	_dropped = false
+	if Input.is_action_just_pressed("drop"):
+		var carried = Key.held_by(get_tree(), self)
+		if carried:
+			carried.drop()
+			_dropped = true
 
 	_target_path = null
 	_drag = Vector2.ZERO

@@ -15,5 +15,11 @@ func replay_tick(tick):
 	global_position = frame["position"]
 	rotation.y = frame["yaw"]
 	head.rotation.x = frame["pitch"]
+	if frame["dropped"]:
+		var carried = Key.held_by(get_tree(), self)
+		if carried:
+			carried.drop()
 	if frame["target_path"]:
-		get_node(frame["target_path"]).report_interaction(self, frame["drag"])
+		var target = get_node_or_null(frame["target_path"])
+		if target:
+			target.report_interaction(self, frame["drag"])

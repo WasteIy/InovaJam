@@ -1,5 +1,5 @@
 class_name Interactable
-extends StaticBody3D
+extends PhysicsBody3D
 
 ## Último tick em que cada clone encostou, indexado pelo nó do player ou do clone
 var _last_touch_tick = {}
