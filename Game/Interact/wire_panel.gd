@@ -5,6 +5,8 @@ extends Node3D
 const WIRE_CONNECT = preload("uid://dwfj3fn4e0req")
 const ROPE = preload("uid://c0jffjhkpknqc")
 
+const ROPE_START = 1.1
+
 var _source_terminals = []
 var _held_source = {}
 var _joined_wires = {}
@@ -35,7 +37,7 @@ func on_terminal_pressed(terminal, agent):
 	if terminal.is_source:
 		_hold_source(agent, terminal)
 		audio_player.stream = ROPE
-		audio_player.play()
+		audio_player.play(ROPE_START)
 		return
 	if not _held_source.has(agent):
 		return

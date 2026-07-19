@@ -8,6 +8,8 @@ const HITS_TO_STABILIZE = 3
 const ON_COLOR = Color(0.2, 1, 0.3)
 const OFF_COLOR = Color(0.12, 0.12, 0.14)
 
+const CLICK_START = 0.03
+
 @onready var needle = $Needle
 @onready var lights = $Lights.get_children()
 @onready var audio_player: AudioStreamPlayer3D = $AudioPlayer
@@ -31,7 +33,7 @@ func on_press(_agent):
 	if is_stabilized or absf(_needle_offset()) > GREEN_ZONE:
 		return
 	_good_hits += 1
-	audio_player.play()
+	audio_player.play(CLICK_START)
 	if _good_hits >= HITS_TO_STABILIZE:
 		is_stabilized = true
 	_refresh_lights()
