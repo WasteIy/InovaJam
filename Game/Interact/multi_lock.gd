@@ -6,8 +6,11 @@ extends Node3D
 @export var door : NodePath
 
 func _physics_process(_delta):
+	var target = get_node_or_null(door)
+	if target == null:
+		return
 	for path in required_parts:
 		if not get_node(path).is_active():
-			get_node(door).show()
+			target.show()
 			return
-	get_node(door).hide()
+	target.hide()
