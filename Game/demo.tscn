@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cfqwece225i8f" path="res://Game/demo.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://cpwelsrsbscvw" path="res://Game/map.tscn" id="2_tp6bg"]
 [ext_resource type="PackedScene" uid="uid://3aa28otrrt0y" path="res://Game/Player/player.tscn" id="4"]
+[ext_resource type="PackedScene" uid="uid://bkytqiuqpnd4s" path="res://Game/Interact/TV_sinwave.tscn" id="6_2gbv4"]
 [ext_resource type="PackedScene" uid="uid://dkpqiv66vl6c0" path="res://Game/core.tscn" id="12_wfyme"]
 [ext_resource type="Script" uid="uid://cpd4tj3jonrs0" path="res://Game/Reactor/phase_shake.gd" id="14"]
 
@@ -106,3 +107,8 @@ collision_layer = 1
 transform = Transform3D(0.165, 0, 0, 0, 0.165, 0, 0, 0, 0.165, -0.26978415, 2.2, -32.416306)
 active_intensity = 0.45
 critical_intensity = 0.8
+
+[node name="Tv_sinwave" parent="." unique_id=582461275 instance=ExtResource("6_2gbv4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.3972554, 1.9798087, -0.81410027)
+
+[editable path="Tv_sinwave"]
