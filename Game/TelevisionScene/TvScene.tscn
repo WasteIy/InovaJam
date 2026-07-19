@@ -77,4 +77,3 @@ time_value = 30
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer" unique_id=1935811305]
 libraries/ = SubResource("AnimationLibrary_wekvm")
-autoplay = &"TvAnimation"
