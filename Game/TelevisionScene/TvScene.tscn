@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dvf6kpxsqwanp"]
 
-[ext_resource type="FontFile" path="res://Assets/Fonts/Seven Segment Mono.ttf" id="1_t4o6k"]
-[ext_resource type="Script" uid="uid://ba5t08f0lo3xk" path="res://Game/TelevisionScene/TimerForTV.gd" id="2_t73v3"]
+[ext_resource type="FontFile" uid="uid://bvpoyim6c61ct" path="res://Assets/Fonts/Seven Segment Mono.ttf" id="1_t4o6k"]
+[ext_resource type="Script" uid="uid://ba5t08f0lo3xk" path="res://Game/TelevisionScene/timer_tv.gd" id="2_t73v3"]
 
 [sub_resource type="Animation" id="Animation_wekvm"]
 length = 0.001

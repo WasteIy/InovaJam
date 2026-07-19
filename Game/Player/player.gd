@@ -75,6 +75,13 @@ func reset_to_spawn():
 	head.rotation = Vector3.ZERO
 
 func _unhandled_input(event):
+	if event.is_action_pressed("Esc"):
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		return
+	if Input.mouse_mode != Input.MOUSE_MODE_CAPTURED:
+		if event is InputEventMouseButton and event.pressed:
+			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+		return
 	if event is InputEventMouseMotion:
 		_mouse_motion += event.relative
 		if not _is_grabbing:

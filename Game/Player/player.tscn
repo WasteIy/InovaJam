@@ -9,6 +9,12 @@
 [ext_resource type="Texture2D" uid="uid://byi6no54oebbg" path="res://Assets/Character/cientist_Image_0.png" id="9_akrrf"]
 [ext_resource type="Script" uid="uid://bsqvl2pabxno1" path="res://Game/Player/head_look.gd" id="head_look"]
 
+[sub_resource type="CameraAttributesPractical" id="CamAttr_1"]
+dof_blur_far_enabled = false
+dof_blur_far_distance = 14.0
+dof_blur_far_transition = 8.0
+dof_blur_amount = 0.04
+
 [sub_resource type="CapsuleShape3D" id="Shape_1"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_m57qa"]
@@ -300,7 +306,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g4v7s"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vh1aq"]
 albedo_color = Color(0, 0, 0, 1)
 
 [sub_resource type="Animation" id="Animation_jgper"]
@@ -1070,6 +1076,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -0.2)
 
 [node name="Camera" type="Camera3D" parent="Head" unique_id=1004294688]
 cull_mask = 1048573
+attributes = SubResource("CamAttr_1")
 script = ExtResource("2")
 
 [node name="Ray" type="RayCast3D" parent="Head" unique_id=191178055]
@@ -1582,20 +1589,20 @@ mesh = SubResource("ArrayMesh_t3ow4")
 skin = SubResource("Skin_v6mv3")
 skeleton = NodePath("..")
 
-[node name="Pupils" type="BoneAttachment3D" parent="Character/Armature_001/Skeleton3D" unique_id=1087814366]
+[node name="Pupils" type="BoneAttachment3D" parent="Character/Armature_001/Skeleton3D" unique_id=1226124306]
 transform = Transform3D(0.9939465, -0.030876316, -0.10543717, 0.10737399, 0.069795206, 0.99176556, -0.023263048, -0.99708337, 0.07268797, 0.5890062, -0.507854, -62.955883)
 bone_name = "mixamorig_Head"
 bone_idx = 5
 
-[node name="Left" type="CSGSphere3D" parent="Character/Armature_001/Skeleton3D/Pupils" unique_id=902488760]
-transform = Transform3D(1, 9.313226e-10, -6.7055225e-08, -2.7939677e-08, 0.99999946, 8.940697e-08, 0, 2.2351742e-08, 1, 1.602503, 4.0073853, 3.9630797)
-radius = 0.2326647
-material = SubResource("StandardMaterial3D_g4v7s")
+[node name="Left" type="CSGSphere3D" parent="Character/Armature_001/Skeleton3D/Pupils" unique_id=1047016811]
+transform = Transform3D(1, 1.071021e-08, -9.685755e-08, -3.1664968e-08, 0.99999934, 1.1175871e-07, 0, 5.9604645e-08, 1.0000007, 1.5746523, 4.07148, 3.961584)
+radius = 0.28407514
+material = SubResource("StandardMaterial3D_vh1aq")
 
-[node name="Right" type="CSGSphere3D" parent="Character/Armature_001/Skeleton3D/Pupils" unique_id=1687106166]
-transform = Transform3D(1, -2.7939677e-09, -8.940697e-08, -3.5390258e-08, 0.9999993, 1.1920929e-07, 0, 5.2154064e-08, 1, -1.3752995, 4.077278, 3.9690814)
-radius = 0.2326647
-material = SubResource("StandardMaterial3D_g4v7s")
+[node name="Right" type="CSGSphere3D" parent="Character/Armature_001/Skeleton3D/Pupils" unique_id=2104500966]
+transform = Transform3D(1, -4.656613e-10, -8.195639e-08, -3.9115548e-08, 0.9999993, 1.3411045e-07, 0, 7.4505806e-08, 1.0000001, -1.327491, 4.09182, 3.9628825)
+radius = 0.27497005
+material = SubResource("StandardMaterial3D_vh1aq")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Character" unique_id=683307174]
 libraries/ = SubResource("AnimationLibrary_ht3ru")
