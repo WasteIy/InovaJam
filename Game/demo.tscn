@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://c7mfja2fr8dst" path="res://Game/Interact/hold_button.gd" id="2"]
 [ext_resource type="PackedScene" uid="uid://cpwelsrsbscvw" path="res://Game/map.tscn" id="2_tp6bg"]
 [ext_resource type="PackedScene" uid="uid://3aa28otrrt0y" path="res://Game/Player/player.tscn" id="4"]
-[ext_resource type="PackedScene" path="res://Game/Interact/pressure_valve.tscn" id="5"]
+[ext_resource type="PackedScene" uid="uid://dlnk0kpemrbh1" path="res://Game/Interact/pressure_valve.tscn" id="5"]
 [ext_resource type="PackedScene" path="res://Game/Interact/turn_valve.tscn" id="6"]
 [ext_resource type="PackedScene" uid="uid://c61erbvd24gh8" path="res://Game/Interact/lever.tscn" id="7"]
 [ext_resource type="Script" uid="uid://duw5ogh6gfafm" path="res://Game/Interact/multi_lock.gd" id="8"]
@@ -14,7 +14,6 @@
 [ext_resource type="PackedScene" path="res://Game/Interact/keyhole.tscn" id="12"]
 [ext_resource type="PackedScene" uid="uid://dkpqiv66vl6c0" path="res://Game/core.tscn" id="12_wfyme"]
 [ext_resource type="Script" uid="uid://cpd4tj3jonrs0" path="res://Game/Reactor/phase_shake.gd" id="14"]
-[ext_resource type="PackedScene" uid="uid://wh3yemsb5fb4" path="res://Game/Reactor/test (1).glb" id="16_kb8el"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5026y"]
 resource_name = "M_desks"
@@ -87,36 +86,9 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_1x0i7")
 
 [sub_resource type="Environment" id="Env_1"]
-background_mode = 1
-background_color = Color(0.025, 0.03, 0.04, 1)
 ambient_light_source = 2
-ambient_light_color = Color(0.26, 0.32, 0.44, 1)
-ambient_light_energy = 0.3
-tonemap_mode = 3
-tonemap_white = 6.0
-ssao_enabled = true
-ssao_radius = 0.8
-ssao_intensity = 3.0
-ssao_power = 2.0
-ssao_light_affect = 0.3
-glow_enabled = true
-glow_normalized = true
-glow_intensity = 0.55
-glow_strength = 1.1
-glow_bloom = 0.15
-glow_hdr_threshold = 0.85
-fog_enabled = true
-fog_light_color = Color(0.09, 0.11, 0.15, 1)
-fog_light_energy = 0.6
-fog_density = 0.012
-fog_sky_affect = 0.0
-volumetric_fog_enabled = true
-volumetric_fog_density = 0.018
-volumetric_fog_albedo = Color(0.62, 0.7, 0.82, 1)
-volumetric_fog_length = 48.0
-adjustment_enabled = true
-adjustment_contrast = 1.15
-adjustment_saturation = 1.1
+ambient_light_color = Color(0.7, 0.72, 0.8, 1)
+ambient_light_energy = 0.8
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_c0tns"]
 size = Vector3(0.7, 0.7, 0.7)
@@ -140,12 +112,6 @@ environment = SubResource("Env_1")
 
 [node name="Directional Light" type="DirectionalLight3D" parent="." unique_id=575047284]
 transform = Transform3D(1, 0, 0, 0, 0.5, 0.866, 0, -0.866, 0.5, 0, 8, 4)
-light_color = Color(0.72, 0.8, 1, 1)
-light_energy = 0.7
-shadow_enabled = true
-shadow_bias = 0.03
-shadow_normal_bias = 1.5
-directional_shadow_max_distance = 60.0
 
 [node name="Player" parent="." unique_id=1972873706 instance=ExtResource("4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.4703484e-08, 1)
@@ -249,6 +215,3 @@ required_parts = Array[NodePath]([NodePath("../Keyhole A"), NodePath("../Keyhole
 transform = Transform3D(0.165, 0, 0, 0, 0.165, 0, 0, 0, 0.165, -0.26978415, 2.2, -32.416306)
 active_intensity = 0.45
 critical_intensity = 0.8
-
-[node name="test (1)" parent="." unique_id=1472027275 instance=ExtResource("16_kb8el")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1, 0)
